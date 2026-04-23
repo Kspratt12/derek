@@ -28,11 +28,8 @@ export function Marquee() {
         style={{ willChange: "transform" }}
       >
         {loop.map((text, i) => (
-          <div
-            key={i}
-            className="group/item mr-10 flex items-center gap-10"
-          >
-            <span className="font-heading text-sm font-bold uppercase tracking-[0.3em] text-ink/85 transition-all duration-300 group-hover/item:scale-[1.04] group-hover/item:text-accent-hover sm:text-base">
+          <div key={i} className="mr-10 flex items-center gap-10">
+            <span className="font-heading text-sm font-bold uppercase tracking-[0.3em] text-ink/85 sm:text-base">
               {text}
             </span>
             <Wrench className="h-4 w-4 text-accent-hover" aria-hidden />
