@@ -76,7 +76,7 @@ export function MeetDerek() {
                   aria-hidden
                 />
                 <p>
-                  I run this thing myself. When you call, you get me — not a
+                  I run this thing myself. When you call, you get me. Not a
                   receptionist, not a service writer, not somebody who&apos;s
                   never seen your car before.
                 </p>

@@ -27,10 +27,10 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-[0.35]"
+          className="object-cover opacity-[0.6]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/75 to-bg" />
-        <div className="absolute inset-0 grid-lines opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg/40 via-bg/55 to-bg/90" />
+        <div className="absolute inset-0 grid-lines opacity-30" />
         {!shouldReduce && (
           <motion.div
             aria-hidden

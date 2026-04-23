@@ -33,7 +33,7 @@ export const cities: City[] = [
     commuterNote:
       "Raleigh commuters can't afford to sit in a waiting room when a car won't start on a Tuesday morning. Derek shows up at your house or office parking lot and handles it where the vehicle sits.",
     localScenario:
-      "A common call: a professional in North Raleigh notices the check engine light on their way into downtown, schedules Derek for lunch hour, and gets back on the road the same afternoon — no rental car, no rideshare, no wasted PTO.",
+      "A common call: a professional in North Raleigh notices the check engine light on their way into downtown, schedules Derek for lunch hour, and gets back on the road the same afternoon. No rental car, no rideshare, no wasted PTO.",
     driveContext: "serving all of Wake County from Raleigh",
   },
   {
@@ -53,7 +53,7 @@ export const cities: City[] = [
       "Pine Hollow",
     ],
     commuterNote:
-      "Most Clayton commutes run 30-45 minutes each way. A breakdown on US-70 at 7am isn't just an inconvenience — it's a missed workday. Derek prioritizes Clayton emergency calls.",
+      "Most Clayton commutes run 30-45 minutes each way. A breakdown on US-70 at 7am isn't just an inconvenience, it's a missed workday. Derek prioritizes Clayton emergency calls.",
     localScenario:
       "A typical call: a homeowner in Flowers Plantation schedules a Saturday brake job. Derek pulls into the driveway with rotors and pads, handles it in the garage, and the family has the car back by afternoon without anyone leaving the neighborhood.",
     driveContext: "serving Clayton, Flowers Plantation, and the US-70 corridor",
@@ -99,7 +99,7 @@ export const cities: City[] = [
     commuterNote:
       "For Smithfield residents, the nearest dealership or chain shop can be a 30-minute tow away. A mobile mechanic is often the fastest route back on the road.",
     localScenario:
-      "Typical Smithfield call: a family's SUV starts overheating near the Premium Outlets. Derek drives out, diagnoses a failed thermostat, and handles the job in the parking lot while the family waits — no tow, no dealership wait.",
+      "Typical Smithfield call: a family's SUV starts overheating near the Premium Outlets. Derek drives out, diagnoses a failed thermostat, and handles the job in the parking lot while the family waits. No tow, no dealership wait.",
     driveContext: "serving Smithfield, Selma, and the I-95 corridor",
   },
   {

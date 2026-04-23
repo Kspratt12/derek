@@ -52,7 +52,7 @@ export function Services() {
           </p>
         </Reveal>
 
-        {/* ROW 1 — Mobile Auto Repair. Photo on left, text on right. */}
+        {/* ROW 1: Mobile Auto Repair. Photo on left, text on right. */}
         <Reveal className="mt-16">
           <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-10">
             <div className="relative lg:col-span-6">
@@ -103,7 +103,7 @@ export function Services() {
           </div>
         </Reveal>
 
-        {/* ROW 2 — Fleet. Text on left, photo on right. Alternating rhythm. */}
+        {/* ROW 2: Fleet. Text on left, photo on right. Alternating rhythm. */}
         <Reveal className="mt-20" delay={0.1}>
           <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-10">
             <div className="order-2 flex flex-col justify-center lg:order-1 lg:col-span-6">
@@ -119,8 +119,8 @@ export function Services() {
               </h3>
               <p className="mt-4 text-lg text-ink/80">
                 Your trucks earn when they&apos;re on the road. Derek works
-                around your schedule — after hours, weekends, at your lot —
-                so downtime doesn&apos;t cost billable days.
+                around your schedule (after hours, weekends, at your lot) so
+                downtime doesn&apos;t cost billable days.
               </p>
               <ul className="mt-6 grid gap-3">
                 {fleet.map((item) => (
@@ -155,12 +155,6 @@ export function Services() {
           </div>
         </Reveal>
 
-        <Reveal className="mt-16 text-center" delay={0.2}>
-          <p className="font-heading text-xl italic text-muted sm:text-2xl">
-            If it drives,{" "}
-            <span className="text-accent-hover">Derek can fix it.</span>
-          </p>
-        </Reveal>
       </div>
     </section>
   );

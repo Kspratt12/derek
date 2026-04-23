@@ -18,7 +18,7 @@ export const services: Service[] = [
     shortName: "Brake Repair",
     headline: "Mobile Brake Repair in Raleigh, NC",
     intro:
-      "Grinding, squealing, or a soft pedal — brake problems don't wait for an appointment. Derek comes to your driveway with rotors, pads, and the tools to handle most brake jobs on-site. No tow, no rental car, no waiting room.",
+      "Grinding, squealing, or a soft pedal. Brake problems don't wait for an appointment. Derek comes to your driveway with rotors, pads, and the tools to handle most brake jobs on-site. No tow, no rental car, no waiting room.",
     includes: [
       "Front and rear brake pad replacement",
       "Rotor resurfacing or replacement",
@@ -78,7 +78,7 @@ export const services: Service[] = [
     shortName: "Fleet Maintenance",
     headline: "Fleet Maintenance Services in Raleigh, NC",
     intro:
-      "Small business fleets can't afford downtime. Derek comes to your lot on your schedule — nights, early mornings, weekends — and keeps your trucks running. Regular oil changes, brake jobs, diagnostics, and pressure washing, all on-site.",
+      "Small business fleets can't afford downtime. Derek comes to your lot on your schedule (nights, early mornings, weekends) and keeps your trucks running. Regular oil changes, brake jobs, diagnostics, and pressure washing, all on-site.",
     includes: [
       "On-site oil changes and filter service",
       "Brake, rotor, and suspension work",
@@ -96,7 +96,7 @@ export const services: Service[] = [
       "Unpredictable repair costs",
     ],
     whyMobile:
-      "Every hour a fleet truck sits in a shop is an hour it's not earning. Derek works around your schedule — after hours, on weekends, at your lot — so your trucks stay on the road during business hours. Fleet clients get priority scheduling and net-30 billing on request.",
+      "Every hour a fleet truck sits in a shop is an hour it's not earning. Derek works around your schedule (after hours, on weekends, at your lot) so your trucks stay on the road during business hours. Fleet clients get priority scheduling and net-30 billing on request.",
     commonVehicles:
       "Dump trucks, box trucks, service vans, landscaping trucks, contractor pickups, and small to mid-size commercial fleets.",
     priceNote:

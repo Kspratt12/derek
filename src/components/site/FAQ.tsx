@@ -73,7 +73,7 @@ export function FAQ() {
             </h2>
             <p className="mt-4 text-lg text-muted">
               The questions people ask Derek most. If yours isn&apos;t here,
-              just call — he&apos;ll shoot straight.
+              just call. He&apos;ll shoot straight.
             </p>
           </Reveal>
 
