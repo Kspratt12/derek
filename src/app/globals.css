@@ -167,4 +167,52 @@
   .animate-marquee-slow {
     animation: marquee-scroll 60s linear infinite;
   }
+
+  /* Subtle green sweep for the header border: a bright spot travels
+     left-to-right across a dim green baseline. Sensor-light vibe. */
+  @keyframes accent-sweep {
+    0% {
+      transform: translateX(-60%);
+    }
+    100% {
+      transform: translateX(160%);
+    }
+  }
+  .header-accent-bar {
+    position: relative;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(60, 105, 32, 0.4) 30%,
+      rgba(60, 105, 32, 0.4) 70%,
+      transparent 100%
+    );
+    overflow: hidden;
+  }
+  .header-accent-bar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 40%;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(130, 200, 80, 0.95),
+      rgba(180, 230, 130, 1),
+      rgba(130, 200, 80, 0.95),
+      transparent
+    );
+    filter: blur(0.5px);
+    box-shadow: 0 0 12px rgba(130, 200, 80, 0.6);
+    animation: accent-sweep 7s linear infinite;
+    will-change: transform;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .header-accent-bar::after {
+      animation: none;
+      display: none;
+    }
+  }
 }

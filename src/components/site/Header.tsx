@@ -46,8 +46,8 @@ export function Header() {
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           scrolled
-            ? "border-b border-border/80 bg-bg/90 backdrop-blur-lg shadow-[0_8px_30px_-15px_rgba(0,0,0,0.6)]"
-            : "border-b border-transparent bg-gradient-to-b from-bg/80 to-bg/40 backdrop-blur-sm"
+            ? "bg-bg/90 backdrop-blur-lg shadow-[0_8px_30px_-15px_rgba(0,0,0,0.6)]"
+            : "bg-gradient-to-b from-bg/80 to-bg/40 backdrop-blur-sm"
         }`}
       >
         <div className="container flex h-16 items-center justify-between sm:h-20">
@@ -141,6 +141,8 @@ export function Header() {
             </button>
           </div>
         </div>
+        {/* Green accent sweep along the header baseline. */}
+        <div aria-hidden className="header-accent-bar" />
       </header>
 
       {/* Mobile drawer */}
