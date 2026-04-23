@@ -74,11 +74,25 @@ export function Testimonials() {
           ))}
         </StaggerGroup>
 
-        <Reveal className="mt-14 text-center" delay={0.2}>
-          <p className="flex items-center justify-center gap-3 font-heading text-sm uppercase tracking-[0.35em] text-muted">
-            <span aria-hidden className="inline-block h-px w-8 bg-accent-hover" />
-            <span className="text-accent-hover">Derek</span>
-            <span aria-hidden className="inline-block h-px w-8 bg-accent-hover" />
+        <Reveal className="mt-16 text-center" delay={0.2}>
+          <p className="flex items-center justify-center gap-4">
+            <span
+              aria-hidden
+              className="inline-block h-px w-12 bg-accent-hover"
+            />
+            <span
+              className="font-serif text-3xl italic text-accent-hover sm:text-4xl"
+              style={{ transform: "rotate(-2deg)" }}
+            >
+              Derek
+            </span>
+            <span
+              aria-hidden
+              className="inline-block h-px w-12 bg-accent-hover"
+            />
+          </p>
+          <p className="mt-2 font-heading text-[10px] uppercase tracking-[0.35em] text-muted/70">
+            Owner &amp; Mechanic
           </p>
         </Reveal>
       </div>

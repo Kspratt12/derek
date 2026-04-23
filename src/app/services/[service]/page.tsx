@@ -74,12 +74,41 @@ export default function ServicePage({
     serviceType: service.shortName,
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://dereksmaintenance.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Services",
+        item: "https://dereksmaintenance.com/#services",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: service.shortName,
+        item: `https://dereksmaintenance.com/services/${service.slug}`,
+      },
+    ],
+  };
+
   return (
     <>
       <Header />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <main>
         <section

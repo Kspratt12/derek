@@ -115,7 +115,7 @@ export function Contact() {
                     type="tel"
                     autoComplete="tel"
                     required
-                    placeholder="(919) 555-0123"
+                    placeholder="Best number to reach you"
                   />
                 </div>
 

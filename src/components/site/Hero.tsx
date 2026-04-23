@@ -78,9 +78,9 @@ export function Hero() {
             {...fadeUp(0.25)}
             className="mt-6 max-w-2xl text-lg text-ink/80 sm:text-xl"
           >
-            On-site auto repair in Raleigh, Clayton, Garner, Smithfield,
-            Knightdale, and Wendell. No tow truck. No waiting room. Just
-            quality work at your driveway.
+            On-site auto repair and fleet maintenance in Raleigh, Clayton,
+            Garner, Smithfield, Knightdale, and Wendell. No tow truck. No
+            waiting room. Just quality work at your driveway.
           </motion.p>
 
           <motion.div
