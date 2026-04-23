@@ -22,7 +22,6 @@ const vehicleBrands: VehicleBrand[] = [
   // Optional extras (component renders any that exist in the array).
   { name: "Subaru", src: "/images/vehicles/subaru.png" },
   { name: "Hyundai", src: "/images/vehicles/hyundai.png" },
-  { name: "Porsche", src: "/images/vehicles/porsche.png" },
 ];
 
 const ENABLED = true;
@@ -52,7 +51,7 @@ export function VehicleBrands() {
           </p>
         </div>
 
-        <ul className="mx-auto mt-10 grid max-w-5xl grid-cols-3 items-start justify-items-center gap-x-2 gap-y-10 sm:grid-cols-4 sm:gap-x-6 md:grid-cols-6 lg:gap-x-8">
+        <ul className="mx-auto mt-10 grid max-w-5xl grid-cols-2 items-start justify-items-center gap-x-4 gap-y-10 sm:grid-cols-5 sm:gap-x-6 lg:gap-x-8">
           {vehicleBrands.map(({ name, src }) => (
             <li
               key={name}
