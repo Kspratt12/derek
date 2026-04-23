@@ -68,7 +68,7 @@ export function VehicleBrands() {
           {loop.map(({ name, src, scale = 1 }, i) => (
             <li
               key={`${name}-${i}`}
-              className="flex h-12 w-[120px] flex-none items-center justify-center pr-14 sm:h-14 sm:w-[140px] sm:pr-20"
+              className="mr-14 flex h-12 w-[120px] flex-none items-center justify-center sm:mr-20 sm:h-14 sm:w-[140px]"
               aria-label={name}
             >
               <div

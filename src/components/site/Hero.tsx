@@ -27,16 +27,13 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-[0.5]"
+          className="object-cover opacity-[0.7]"
         />
-        {/* Base gradient: darker at top and bottom so text always has a
-            readable canvas; lighter through the center so the photo
-            still reads. */}
-        <div className="absolute inset-0 bg-gradient-to-b from-bg/80 via-bg/50 to-bg/95" />
-        {/* Focal darken behind the left-column text so headline and
-            eyebrow sit on a readable canvas even against the cream
-            garage walls in the photo. */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_45%,rgba(15,15,15,0.7),transparent_55%)]" />
+        {/* Lighter gradient so the photo shows more: soft darken at
+            top and bottom, mostly transparent through the middle. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-bg/60 via-bg/25 to-bg/80" />
+        {/* Subtle focal shadow behind the text column (not heavy). */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(15,15,15,0.4),transparent_60%)]" />
         <div className="absolute inset-0 grid-lines opacity-30" />
         {!shouldReduce && (
           <motion.div
@@ -53,18 +50,18 @@ export function Hero() {
         <div className="max-w-4xl">
           <motion.div
             {...fadeUp(0)}
-            className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2"
+            className="mb-6 inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-full border border-border/60 bg-bg/60 px-4 py-2 backdrop-blur-md"
           >
             <span className="eyebrow flex items-center gap-2">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
               Raleigh, NC
             </span>
-            <span className="eyebrow flex items-center gap-2 text-muted">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-muted" />
+            <span className="eyebrow flex items-center gap-2 text-ink/70">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-ink/40" />
               Available 24/7
             </span>
-            <span className="eyebrow flex items-center gap-2 text-muted">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-muted" />
+            <span className="eyebrow flex items-center gap-2 text-ink/70">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-ink/40" />
               Family Owned
             </span>
           </motion.div>
@@ -73,6 +70,10 @@ export function Hero() {
             {...fadeUp(0.1)}
             id="hero-heading"
             className="font-heading text-5xl font-bold uppercase leading-[0.95] tracking-tight text-ink sm:text-6xl md:text-7xl lg:text-[84px]"
+            style={{
+              textShadow:
+                "0 2px 8px rgba(0,0,0,0.6), 0 0 30px rgba(0,0,0,0.4)",
+            }}
           >
             Raleigh&apos;s
             <br />
