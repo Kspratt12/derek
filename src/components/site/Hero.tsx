@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Phone, ArrowRight, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -21,24 +20,25 @@ export function Hero() {
       className="relative isolate overflow-hidden"
     >
       <div className="absolute inset-0 -z-10">
-        <Image
-          src="/images/mustang.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-[0.55]"
-        />
-        {/* Balanced darken so subhead and CTAs still read cleanly. */}
-        <div className="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/45 to-bg/90" />
-        {/* Wider focal shadow covering the full text column (headline
-            through subhead to CTAs). */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_55%,rgba(15,15,15,0.6),transparent_65%)]" />
-        <div className="absolute inset-0 grid-lines opacity-30" />
+        {/* Layered dark background with green accent wash and subtle grid. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-bg via-surface/40 to-bg" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(45,80,22,0.25),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_10%_80%,rgba(45,80,22,0.15),transparent_55%)]" />
+        <div className="absolute inset-0 grid-lines opacity-40" />
+
+        {/* Oversized watermark-style accent: huge faded EST. mark in corner. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-8 bottom-8 select-none font-heading font-bold uppercase leading-none text-accent/[0.06] sm:-right-4 sm:bottom-12"
+          style={{ fontSize: "clamp(12rem, 28vw, 30rem)" }}
+        >
+          NC
+        </div>
+
         {!shouldReduce && (
           <motion.div
             aria-hidden
-            className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(45,80,22,0.18),transparent_60%)]"
+            className="absolute inset-0 bg-[radial-gradient(circle_at_25%_30%,rgba(45,80,22,0.12),transparent_60%)]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.4 }}
@@ -46,22 +46,22 @@ export function Hero() {
         )}
       </div>
 
-      <div className="container relative flex min-h-[92vh] flex-col justify-center py-20 sm:min-h-[90vh] sm:py-24 lg:py-28">
+      <div className="container relative flex min-h-[90vh] flex-col justify-center py-20 sm:min-h-[88vh] sm:py-24 lg:py-28">
         <div className="max-w-4xl">
           <motion.div
             {...fadeUp(0)}
-            className="mb-6 inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-full border border-border/60 bg-bg/60 px-4 py-2 backdrop-blur-md"
+            className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-x-5"
           >
             <span className="eyebrow flex items-center gap-2">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
               Raleigh, NC
             </span>
-            <span className="eyebrow flex items-center gap-2 text-ink/70">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-ink/40" />
+            <span className="h-3 w-px bg-border/80" aria-hidden />
+            <span className="eyebrow flex items-center gap-2 text-ink/60">
               Available 24/7
             </span>
-            <span className="eyebrow flex items-center gap-2 text-ink/70">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-ink/40" />
+            <span className="h-3 w-px bg-border/80" aria-hidden />
+            <span className="eyebrow flex items-center gap-2 text-ink/60">
               Family Owned
             </span>
           </motion.div>
@@ -70,7 +70,6 @@ export function Hero() {
             {...fadeUp(0.1)}
             id="hero-heading"
             className="font-heading text-5xl font-bold uppercase leading-[0.95] tracking-tight text-ink sm:text-6xl md:text-7xl lg:text-[84px]"
-            style={{ textShadow: "0 1px 3px rgba(0,0,0,0.4)" }}
           >
             Raleigh&apos;s
             <br />
@@ -81,8 +80,7 @@ export function Hero() {
 
           <motion.p
             {...fadeUp(0.25)}
-            className="mt-6 max-w-2xl text-lg text-ink/90 sm:text-xl"
-            style={{ textShadow: "0 1px 2px rgba(0,0,0,0.35)" }}
+            className="mt-6 max-w-2xl text-lg text-ink/80 sm:text-xl"
           >
             On-site auto repair and fleet maintenance in Raleigh, Clayton,
             Garner, Smithfield, Knightdale, and Wendell. No tow truck. No
@@ -114,8 +112,7 @@ export function Hero() {
 
           <motion.div
             {...fadeUp(0.55)}
-            className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink/85"
-            style={{ textShadow: "0 1px 2px rgba(0,0,0,0.3)" }}
+            className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted"
           >
             <span className="inline-flex items-center gap-2">
               <Clock className="h-4 w-4 text-accent-hover" aria-hidden />
