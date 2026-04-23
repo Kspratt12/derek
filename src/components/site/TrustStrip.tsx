@@ -34,9 +34,15 @@ export function TrustStrip() {
     >
       <div className="container">
         <div className="flex flex-col items-center gap-3 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5">
-            <ShieldCheck className="h-4 w-4 text-accent-hover" aria-hidden />
-            <span className="font-heading text-[10px] font-semibold uppercase tracking-[0.3em] text-accent-hover">
+          <span className="pill-chrome inline-flex items-center gap-2 rounded-full px-4 py-1.5">
+            <ShieldCheck
+              className="relative h-4 w-4 text-[#1A1A1A]"
+              aria-hidden
+            />
+            <span
+              className="relative font-heading text-[10px] font-semibold uppercase tracking-[0.3em] text-[#1A1A1A]"
+              style={{ textShadow: "0 1px 0 rgba(255,255,255,0.25)" }}
+            >
               Quality Parts
             </span>
           </span>

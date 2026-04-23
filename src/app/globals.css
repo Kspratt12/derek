@@ -168,6 +168,54 @@
     animation: marquee-scroll 60s linear infinite;
   }
 
+  /* Chrome-gold pill for section eyebrow badges with a slow shimmer
+     flare that sweeps across the metallic surface every few seconds. */
+  @keyframes pill-shimmer {
+    0% {
+      transform: translateX(-120%) skewX(-20deg);
+    }
+    55%,
+    100% {
+      transform: translateX(250%) skewX(-20deg);
+    }
+  }
+  .pill-chrome {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+      135deg,
+      #f5dfa0 0%,
+      #d4af37 40%,
+      #8b6a14 100%
+    );
+    border: 1px solid #6f5210;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+      0 2px 6px -2px rgba(0, 0, 0, 0.4);
+  }
+  .pill-chrome::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.7) 50%,
+      transparent 100%
+    );
+    animation: pill-shimmer 5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pill-chrome::after {
+      display: none;
+    }
+  }
+
   /* Subtle green sweep for the header border: a bright spot travels
      left-to-right across a dim green baseline. Sensor-light vibe. */
   @keyframes accent-sweep {
