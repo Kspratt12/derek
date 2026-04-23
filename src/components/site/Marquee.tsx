@@ -12,20 +12,27 @@ const items = [
 ];
 
 export function Marquee() {
-  // Double the items so the loop is seamless (translateX -50% lands on a copy).
+  // Doubled so translateX(-50%) loops seamlessly; pause on hover.
   const loop = [...items, ...items];
 
   return (
     <div
       aria-hidden
-      className="relative overflow-hidden border-y border-border bg-accent/10 py-4"
+      className="group/mq relative overflow-hidden border-y border-border bg-accent/10 py-4"
     >
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-bg to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-bg to-transparent" />
-      <div className="flex w-max animate-marquee gap-10 whitespace-nowrap">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-bg to-transparent sm:w-24" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-bg to-transparent sm:w-24" />
+
+      <div
+        className="flex w-max animate-marquee whitespace-nowrap group-hover/mq:[animation-play-state:paused] motion-reduce:animate-none"
+        style={{ willChange: "transform" }}
+      >
         {loop.map((text, i) => (
-          <div key={i} className="flex items-center gap-10">
-            <span className="font-heading text-sm font-bold uppercase tracking-[0.3em] text-ink/90 sm:text-base">
+          <div
+            key={i}
+            className="group/item mr-10 flex items-center gap-10"
+          >
+            <span className="font-heading text-sm font-bold uppercase tracking-[0.3em] text-ink/85 transition-all duration-300 group-hover/item:scale-[1.04] group-hover/item:text-accent-hover sm:text-base">
               {text}
             </span>
             <Wrench className="h-4 w-4 text-accent-hover" aria-hidden />
