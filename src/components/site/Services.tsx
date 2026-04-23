@@ -36,7 +36,7 @@ export function Services() {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="relative overflow-hidden py-20 sm:py-28"
+      className="relative overflow-hidden bg-[#0F0F0F] py-20 sm:py-28"
     >
       <div className="container">
         <Reveal className="max-w-3xl">

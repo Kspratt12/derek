@@ -29,8 +29,14 @@ export function Testimonials() {
     <section
       id="promise"
       aria-labelledby="promise-heading"
-      className="relative overflow-hidden py-20 sm:py-24"
+      className="relative isolate overflow-hidden py-20 sm:py-24"
     >
+      {/* Subtle forest-green wash lifts this section out of the pure-dark
+          rhythm. Derek's commitments deserve a little weight. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_50%_40%,rgba(45,80,22,0.12),transparent_60%)]"
+      />
       <div className="container">
         <Reveal className="mx-auto max-w-3xl text-center">
           <p className="eyebrow">My Word On It</p>

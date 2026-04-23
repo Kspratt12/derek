@@ -151,7 +151,7 @@ export function BeforeAfter() {
     <section
       id="before-after"
       aria-labelledby="before-after-heading"
-      className="relative py-20 sm:py-28"
+      className="relative bg-[#0F0F0F] py-20 sm:py-28"
     >
       <div className="container">
         <div className="max-w-3xl">
