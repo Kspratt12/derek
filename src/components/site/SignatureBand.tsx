@@ -56,10 +56,28 @@ export function SignatureBand() {
           </motion.p>
 
           <motion.h2
-            initial={shouldReduce ? false : { opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={
+              shouldReduce
+                ? false
+                : { opacity: 0, x: 280, filter: "blur(2px)" }
+            }
+            whileInView={{
+              opacity: [0, 1, 1, 1, 1],
+              x: [280, 0, -8, 4, 0],
+              filter: [
+                "blur(2px)",
+                "blur(0px)",
+                "blur(0px)",
+                "blur(0px)",
+                "blur(0px)",
+              ],
+            }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 1.3,
+              times: [0, 0.68, 0.82, 0.92, 1],
+              ease: [0.85, 0, 0.15, 1],
+            }}
             className="mt-6 font-heading font-bold uppercase leading-[0.88] tracking-tight text-ink"
             style={{ fontSize: "clamp(3rem, 10vw, 9rem)" }}
           >
@@ -67,20 +85,24 @@ export function SignatureBand() {
             <br />
             <span className="relative inline-block">
               <span className="text-accent-hover">Derek Fixes It.</span>
-              <svg
+              <motion.svg
                 aria-hidden
                 viewBox="0 0 600 20"
                 preserveAspectRatio="none"
                 className="absolute -bottom-2 left-0 h-3 w-full text-accent"
+                initial={shouldReduce ? false : { pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.9, delay: 0.9, ease: "easeOut" }}
               >
-                <path
+                <motion.path
                   d="M 5 15 Q 150 2, 300 12 T 595 8"
                   stroke="currentColor"
                   strokeWidth="3"
                   fill="none"
                   strokeLinecap="round"
                 />
-              </svg>
+              </motion.svg>
             </span>
           </motion.h2>
 
@@ -101,13 +123,20 @@ export function SignatureBand() {
       </div>
 
 
-      {/* Rotated corner stamp */}
+      {/* Rotated corner stamp: spins in and settles into the tilted rest pose,
+          like a rubber stamp being pressed onto paper. */}
       <motion.div
         aria-hidden
-        initial={shouldReduce ? false : { opacity: 0, rotate: -12, scale: 0.8 }}
+        initial={
+          shouldReduce ? false : { opacity: 0, rotate: -372, scale: 0.5 }
+        }
         whileInView={{ opacity: 1, rotate: -12, scale: 1 }}
         viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 80 }}
+        transition={{
+          duration: 1.2,
+          delay: 0.6,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         className="pointer-events-none absolute right-6 top-6 hidden sm:block lg:right-10 lg:top-10"
       >
         <div className="relative flex h-28 w-28 items-center justify-center rounded-full border-[3px] border-accent/70 bg-bg/80 backdrop-blur lg:h-32 lg:w-32">
