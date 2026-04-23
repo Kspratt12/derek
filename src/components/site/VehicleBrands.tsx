@@ -18,7 +18,7 @@ const vehicleBrands: VehicleBrand[] = [
   { name: "GMC", src: "/images/vehicles/gmc.png" },
   { name: "Subaru", src: "/images/vehicles/subaru.png" },
   { name: "Hyundai", src: "/images/vehicles/hyundai.png" },
-  { name: "Porsche", src: "/images/vehicles/porsche.png", scale: 1.1 },
+  { name: "Porsche", src: "/images/vehicles/porsche.png" },
 ];
 
 const ENABLED = true;
