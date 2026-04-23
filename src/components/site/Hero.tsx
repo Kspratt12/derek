@@ -27,13 +27,13 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-[0.7]"
+          className="object-cover opacity-[0.55]"
         />
-        {/* Lighter gradient so the photo shows more: soft darken at
-            top and bottom, mostly transparent through the middle. */}
-        <div className="absolute inset-0 bg-gradient-to-b from-bg/60 via-bg/25 to-bg/80" />
-        {/* Subtle focal shadow behind the text column (not heavy). */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(15,15,15,0.4),transparent_60%)]" />
+        {/* Balanced darken so subhead and CTAs still read cleanly. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/45 to-bg/90" />
+        {/* Wider focal shadow covering the full text column (headline
+            through subhead to CTAs). */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_55%,rgba(15,15,15,0.6),transparent_65%)]" />
         <div className="absolute inset-0 grid-lines opacity-30" />
         {!shouldReduce && (
           <motion.div
@@ -84,7 +84,8 @@ export function Hero() {
 
           <motion.p
             {...fadeUp(0.25)}
-            className="mt-6 max-w-2xl text-lg text-ink/80 sm:text-xl"
+            className="mt-6 max-w-2xl text-lg text-ink/90 sm:text-xl"
+            style={{ textShadow: "0 1px 6px rgba(0,0,0,0.75)" }}
           >
             On-site auto repair and fleet maintenance in Raleigh, Clayton,
             Garner, Smithfield, Knightdale, and Wendell. No tow truck. No
@@ -116,7 +117,8 @@ export function Hero() {
 
           <motion.div
             {...fadeUp(0.55)}
-            className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted"
+            className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink/85"
+            style={{ textShadow: "0 1px 4px rgba(0,0,0,0.75)" }}
           >
             <span className="inline-flex items-center gap-2">
               <Clock className="h-4 w-4 text-accent-hover" aria-hidden />
