@@ -126,7 +126,7 @@ export function Contact() {
                     name="email"
                     type="email"
                     autoComplete="email"
-                    placeholder="you@example.com"
+                    placeholder="james24@gmail.com"
                   />
                 </div>
 

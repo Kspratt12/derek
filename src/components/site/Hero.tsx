@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Phone, ArrowRight, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -20,25 +21,27 @@ export function Hero() {
       className="relative isolate overflow-hidden"
     >
       <div className="absolute inset-0 -z-10">
-        {/* Layered dark background with green accent wash and subtle grid. */}
-        <div className="absolute inset-0 bg-gradient-to-b from-bg via-surface/40 to-bg" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(45,80,22,0.25),transparent_55%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_10%_80%,rgba(45,80,22,0.15),transparent_55%)]" />
-        <div className="absolute inset-0 grid-lines opacity-40" />
-
-        {/* Oversized watermark-style accent: huge faded EST. mark in corner. */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-8 bottom-8 select-none font-heading font-bold uppercase leading-none text-accent/[0.06] sm:-right-4 sm:bottom-12"
-          style={{ fontSize: "clamp(12rem, 28vw, 30rem)" }}
-        >
-          NC
-        </div>
+        <Image
+          src="/images/hero-1.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-[0.5]"
+          style={{ objectPosition: "center 35%" }}
+        />
+        {/* Primary darken so headline sits on a readable canvas. */}
+        <div className="absolute inset-0 bg-gradient-to-r from-bg/95 via-bg/70 to-bg/50" />
+        {/* Secondary top/bottom gradient to frame the text column. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-bg/60 via-transparent to-bg/85" />
+        {/* Green accent wash bleeds in from the right. */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_30%,rgba(45,80,22,0.2),transparent_55%)]" />
+        <div className="absolute inset-0 grid-lines opacity-25" />
 
         {!shouldReduce && (
           <motion.div
             aria-hidden
-            className="absolute inset-0 bg-[radial-gradient(circle_at_25%_30%,rgba(45,80,22,0.12),transparent_60%)]"
+            className="absolute inset-0 bg-[radial-gradient(circle_at_15%_50%,rgba(15,15,15,0.4),transparent_60%)]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.4 }}
@@ -80,7 +83,7 @@ export function Hero() {
 
           <motion.p
             {...fadeUp(0.25)}
-            className="mt-6 max-w-2xl text-lg text-ink/80 sm:text-xl"
+            className="mt-6 max-w-2xl text-lg text-ink/85 sm:text-xl"
           >
             On-site auto repair and fleet maintenance in Raleigh, Clayton,
             Garner, Smithfield, Knightdale, and Wendell. No tow truck. No
