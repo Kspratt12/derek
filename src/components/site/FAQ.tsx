@@ -7,36 +7,36 @@ import { Reveal } from "./Reveal";
 
 const faqs = [
   {
-    q: "Is a mobile mechanic more expensive than a shop?",
-    a: "No. Derek's overhead is lower than a brick-and-mortar shop, so labor is usually equal or less. You also save the tow, the rideshare home, and a day off work sitting in a waiting room.",
+    q: "Is mobile more expensive than a shop?",
+    a: "Usually it's the same or less. I don't have a shop to pay rent on, so my labor rate reflects that. You also save the tow, the ride home, and a wasted day.",
   },
   {
-    q: "What if you can't fix it at my driveway?",
-    a: "If the job needs a lift or specialty equipment, Derek tells you before any work starts and helps coordinate the right shop. No guessing, no surprise charges.",
+    q: "What if you can't fix it in my driveway?",
+    a: "If a job really needs a lift or specialty equipment, I tell you before I start and help line up the right shop. No guessing and no charge for the trip.",
   },
   {
-    q: "What forms of payment do you take?",
-    a: "Cash, card, Zelle, and Cash App. You pay when the job is finished and your vehicle runs right, not before.",
+    q: "How do I pay you?",
+    a: "Cash, card, Zelle, or Cash App. You pay when the job is done and the vehicle runs right. Not before.",
   },
   {
-    q: "Do you service the whole Raleigh area?",
-    a: "Yes. Derek covers Raleigh, Clayton, Garner, Smithfield, Knightdale, and Wendell. Outside that radius, call and he'll tell you straight whether he can make it.",
+    q: "Do you cover my area?",
+    a: "I run Raleigh, Clayton, Garner, Smithfield, Knightdale, and Wendell regularly. Outside that, call me and I'll tell you straight whether I can make it.",
   },
   {
-    q: "Are you really available 24/7?",
-    a: "For emergencies, yes. Breakdowns, fleet-down situations, and no-start mornings get the phone answered day or night. Routine maintenance is scheduled during standard hours.",
+    q: "Are you actually available 24/7?",
+    a: "For emergencies, yes. Breakdowns, fleet-down mornings, and no-starts get the phone answered day or night. Routine stuff is booked during normal hours.",
   },
   {
-    q: "Do you do fleet work for small businesses?",
-    a: "Yes. Dump trucks, commercial vehicles, pressure washing, and routine fleet maintenance. Derek comes to your lot on your schedule so your trucks keep moving.",
+    q: "Do you work on fleets?",
+    a: "Yes. Dump trucks, box trucks, service vans, landscaping rigs. I come to your lot on your schedule so your trucks keep earning.",
   },
   {
     q: "Do you warranty your work?",
-    a: "Yes. Parts carry the manufacturer warranty. Derek's labor is backed by his name. If something he fixed isn't right, he comes back and makes it right.",
+    a: "Yes. Parts carry whatever the manufacturer offers. My labor is backed by my name. Something I fixed isn't holding up, I come back and make it right.",
   },
   {
     q: "How fast can you get to me?",
-    a: "Same-day response is the norm. Emergencies get priority. For routine jobs, Derek typically schedules within 1-3 days depending on parts availability.",
+    a: "Same-day response is the norm. Emergencies jump the line. For routine jobs I usually schedule within a day or two depending on parts.",
   },
 ];
 
@@ -67,13 +67,15 @@ export function FAQ() {
       <div className="container">
         <div className="grid gap-10 lg:grid-cols-5">
           <Reveal className="lg:col-span-2">
-            <p className="eyebrow">Questions</p>
+            <p className="eyebrow">Straight Answers</p>
             <h2 id="faq-heading" className="section-title mt-3">
-              Before You Call
+              What People
+              <br />
+              <span className="text-accent-hover">Usually Ask Me</span>
             </h2>
             <p className="mt-4 text-lg text-muted">
-              The questions people ask Derek most. If yours isn&apos;t here,
-              just call. He&apos;ll shoot straight.
+              If your question isn&apos;t here, just call. I&apos;ll shoot
+              straight either way.
             </p>
           </Reveal>
 

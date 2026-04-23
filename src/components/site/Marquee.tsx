@@ -1,14 +1,14 @@
 import { Wrench } from "lucide-react";
 
 const items = [
-  "24/7 Mobile Service",
-  "Same-Day Availability",
+  "I come to your driveway",
+  "Quotes before work begins",
   "Raleigh, NC",
-  "No Tow Truck Needed",
-  "Family Owned",
-  "Honest Pricing",
-  "Fleet Maintenance",
-  "Call (919) 798-4452",
+  "No tow. No waiting room.",
+  "Family owned",
+  "Nights, weekends, emergencies",
+  "Fleets and commercial",
+  "(919) 798-4452",
 ];
 
 export function Marquee() {

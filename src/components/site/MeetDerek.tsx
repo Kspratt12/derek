@@ -94,6 +94,17 @@ export function MeetDerek() {
               </p>
             </div>
 
+            <div className="mt-8 flex items-center gap-4">
+              <span
+                aria-hidden
+                className="inline-block h-px w-10 bg-accent-hover"
+              />
+              <span className="font-heading text-sm font-bold uppercase tracking-[0.3em] text-accent-hover">
+                Derek
+              </span>
+              <span className="text-xs text-muted">Owner &amp; Mechanic</span>
+            </div>
+
             <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
               <Button asChild size="lg">
                 <a href="tel:+19197984452" className="gap-2">

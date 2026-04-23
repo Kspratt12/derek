@@ -39,16 +39,16 @@ export function Testimonials() {
       <div className="container">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-4">
-            <p className="eyebrow">Derek&apos;s Word</p>
+            <p className="eyebrow">My Word On It</p>
             <h2 id="promise-heading" className="section-title mt-3">
-              Three Promises.
+              Three Things
               <br />
-              <span className="text-accent-hover">Every Job.</span>
+              <span className="text-accent-hover">I Don&apos;t Break On.</span>
             </h2>
             <p className="mt-5 text-lg text-muted">
-              Derek runs on referrals and repeat work. That only happens if
-              he delivers the same thing every time, to every customer.
-              These are the three things he doesn&apos;t break on.
+              My business runs on referrals and repeat work. That only
+              happens if I deliver the same thing every time, to every
+              customer. These are the three I hold the line on.
             </p>
           </Reveal>
 

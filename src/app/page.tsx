@@ -13,6 +13,7 @@ import { Services } from "@/components/site/Services";
 import { SignatureBand } from "@/components/site/SignatureBand";
 import { Stats } from "@/components/site/Stats";
 import { Testimonials } from "@/components/site/Testimonials";
+import { TrustStrip } from "@/components/site/TrustStrip";
 
 export default function HomePage() {
   return (
@@ -24,6 +25,7 @@ export default function HomePage() {
         <Stats />
         <MeetDerek />
         <Services />
+        <TrustStrip />
         <SignatureBand />
         <HowItWorks />
         <Gallery />
