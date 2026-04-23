@@ -69,14 +69,6 @@ export function Services() {
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               </div>
 
-              <div className="absolute -right-4 bottom-6 z-10 rotate-[-4deg] rounded-xl border-2 border-accent bg-bg px-5 py-3 shadow-xl sm:right-6">
-                <p className="font-heading text-[10px] uppercase tracking-[0.3em] text-accent-hover">
-                  Old vs New
-                </p>
-                <p className="font-heading text-sm font-bold uppercase text-ink">
-                  Replacement Work
-                </p>
-              </div>
             </div>
 
             <div className="flex flex-col justify-center lg:col-span-6">
@@ -143,14 +135,6 @@ export function Services() {
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               </div>
 
-              <div className="absolute -left-4 bottom-6 z-10 rotate-[3deg] rounded-xl border-2 border-accent bg-bg px-5 py-3 shadow-xl sm:left-6">
-                <p className="font-heading text-[10px] uppercase tracking-[0.3em] text-accent-hover">
-                  Heavy Duty
-                </p>
-                <p className="font-heading text-sm font-bold uppercase text-ink">
-                  On Your Lot
-                </p>
-              </div>
             </div>
           </div>
         </Reveal>

@@ -71,7 +71,7 @@ export function FAQ() {
             <h2 id="faq-heading" className="section-title mt-3">
               What People
               <br />
-              <span className="text-accent-hover">Usually Ask Me</span>
+              Usually <em className="font-serif italic text-ink/95">Ask Me</em>
             </h2>
             <p className="mt-4 text-lg text-muted">
               If your question isn&apos;t here, just call. I&apos;ll shoot

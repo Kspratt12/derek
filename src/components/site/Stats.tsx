@@ -1,32 +1,143 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { HomeIcon, MapPin, PhoneCall, Wrench } from "lucide-react";
 
 type Fact = {
-  icon: typeof Wrench;
+  icon: (props: { className?: string }) => JSX.Element;
   headline: string;
   detail: string;
 };
 
+// Custom stroked SVGs (different visual language from Lucide's line style)
+// so this section does not share the 'every icon is Lucide' tell.
+function HouseIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden className={className}>
+      <path
+        d="M4 11L12 4L20 11V20H15V14H9V20H4V11Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M2 12L12 3L22 12"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function CrossedWrenchesIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden className={className}>
+      <path
+        d="M6 5 L10 9 M14 15 L19 20"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      <circle
+        cx="5"
+        cy="5"
+        r="2.2"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        fill="none"
+      />
+      <circle
+        cx="19"
+        cy="19"
+        r="2.2"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        fill="none"
+      />
+      <path
+        d="M18 5 L14 9 M10 15 L5 20"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      <circle
+        cx="19"
+        cy="5"
+        r="2.2"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        fill="none"
+      />
+      <circle
+        cx="5"
+        cy="19"
+        r="2.2"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        fill="none"
+      />
+    </svg>
+  );
+}
+
+function RetroPhoneIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden className={className}>
+      <path
+        d="M5 9 Q5 5 9 5 L11 5 Q11 7 10.5 8.5 L8.5 9.5 Q10 13 14.5 15.5 L15.5 13.5 Q17 13 19 13 L19 15 Q19 19 15 19 Q9 19 5 15 Q5 13 5 9 Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M14 7 L17 7 M14 4 L17 4"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function MapPinIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden className={className}>
+      <path
+        d="M12 22 Q6 15 6 10 Q6 5 12 5 Q18 5 18 10 Q18 15 12 22 Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <circle
+        cx="12"
+        cy="10"
+        r="2.2"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        fill="none"
+      />
+    </svg>
+  );
+}
+
 const facts: Fact[] = [
   {
-    icon: HomeIcon,
+    icon: HouseIcon,
     headline: "Family Owned",
     detail: "One mechanic. One standard. One name on every invoice.",
   },
   {
-    icon: Wrench,
+    icon: CrossedWrenchesIcon,
     headline: "Mobile Only",
     detail: "No tow truck, no shop drop-off. Derek comes to your driveway.",
   },
   {
-    icon: PhoneCall,
+    icon: RetroPhoneIcon,
     headline: "Always Answering",
     detail: "Breakdown calls get picked up. 24/7, year-round.",
   },
   {
-    icon: MapPin,
+    icon: MapPinIcon,
     headline: "Wake & Johnston",
     detail: "Raleigh, Clayton, Garner, Smithfield, Knightdale, Wendell.",
   },
@@ -66,7 +177,7 @@ export function Stats() {
               className="group flex items-start gap-4"
             >
               <span className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30 transition-colors group-hover:bg-accent/25">
-                <Icon className="h-5 w-5 text-accent-hover" aria-hidden />
+                <Icon className="h-5 w-5 text-accent-hover" />
               </span>
               <div>
                 <p className="font-heading text-lg font-bold uppercase tracking-wide text-ink">

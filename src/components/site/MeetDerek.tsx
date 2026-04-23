@@ -47,7 +47,7 @@ export function MeetDerek() {
                 </div>
               </div>
 
-              <div className="absolute -bottom-6 -right-6 rotate-6 rounded-xl border-2 border-accent bg-bg px-5 py-4 shadow-xl">
+              <div className="absolute -bottom-6 -right-6 hidden rotate-6 rounded-xl border-2 border-accent bg-bg px-5 py-4 shadow-xl sm:block">
                 <p className="font-heading text-[10px] uppercase tracking-[0.3em] text-accent-hover">
                   Since
                 </p>

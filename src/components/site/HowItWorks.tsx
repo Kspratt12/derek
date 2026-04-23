@@ -42,7 +42,7 @@ export function HowItWorks() {
               >
                 From Call
                 <br />
-                <span className="text-accent-hover">To Keys Back.</span>
+                To Keys Back.
               </h2>
               <p className="mt-6 max-w-sm text-lg text-muted">
                 Four steps. No waiting rooms, no runaround, no middlemen.
