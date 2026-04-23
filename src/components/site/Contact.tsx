@@ -1,8 +1,5 @@
 "use client";
 
-// Resend / Formspree wiring will replace the onSubmit handler here later.
-// For now the form is visual only. Submitting shows a confirmation message.
-
 import { useState } from "react";
 import { Clock, Mail, MapPin, Phone, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -20,8 +17,52 @@ const serviceAreas = [
   "Wendell",
 ];
 
+// Swap this with Derek's Formspree endpoint after signing up at formspree.io.
+// Free tier: 50 submissions/mo, emails to dereksmaintenance@gmail.com.
+const FORMSPREE_ENDPOINT =
+  process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ||
+  "https://formspree.io/f/REPLACE_WITH_DEREKS_FORM_ID";
+
+type Status = "idle" | "submitting" | "success" | "error";
+
 export function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const submitted = status === "success";
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+    setErrorMessage("");
+
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(
+          data?.errors?.[0]?.message ||
+            "Something went wrong. Please call Derek directly."
+        );
+      }
+
+      setStatus("success");
+    } catch (err) {
+      setStatus("error");
+      setErrorMessage(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please call Derek directly."
+      );
+    }
+  }
 
   return (
     <section
@@ -45,11 +86,15 @@ export function Contact() {
           <div className="lg:col-span-3">
             <form
               className="rounded-xl border border-border bg-bg/60 p-6 sm:p-8"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSubmitted(true);
-              }}
+              onSubmit={handleSubmit}
             >
+              <input
+                type="hidden"
+                name="_subject"
+                value="New service request from derekmaintenance.com"
+              />
+              <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
+
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="space-y-2 sm:col-span-2">
                   <Label htmlFor="name">Full Name</Label>
@@ -106,6 +151,24 @@ export function Contact() {
                   />
                 </div>
 
+                <div className="space-y-2 sm:col-span-2">
+                  <Label htmlFor="timing">When Do You Need It?</Label>
+                  <select
+                    id="timing"
+                    name="timing"
+                    defaultValue="asap"
+                    className="flex h-10 w-full rounded-md border border-border bg-surface px-3 py-2 text-sm text-ink ring-offset-bg file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    <option value="emergency">Emergency / Broken down now</option>
+                    <option value="asap">ASAP / Today if possible</option>
+                    <option value="morning">Morning</option>
+                    <option value="afternoon">Afternoon</option>
+                    <option value="evening">Evening</option>
+                    <option value="this-week">Sometime this week</option>
+                    <option value="flexible">I&apos;m flexible</option>
+                  </select>
+                </div>
+
                 <div className="space-y-3 sm:col-span-2">
                   <Label>Preferred Contact Method</Label>
                   <RadioGroup
@@ -140,9 +203,11 @@ export function Contact() {
                 type="submit"
                 size="lg"
                 className="mt-6 w-full gap-2"
-                disabled={submitted}
+                disabled={status === "submitting" || submitted}
               >
-                {submitted ? (
+                {status === "submitting" ? (
+                  "Sending..."
+                ) : submitted ? (
                   "Request Received"
                 ) : (
                   <>
@@ -152,15 +217,34 @@ export function Contact() {
                 )}
               </Button>
 
-              {submitted ? (
+              {submitted && (
                 <p
                   role="status"
                   className="mt-4 rounded-md border border-accent/40 bg-accent/10 p-3 text-sm text-ink"
                 >
                   Thanks. Derek will be in touch, usually same day. For
-                  emergencies, call <a href="tel:+19197984452" className="underline">(919) 798-4452</a>.
+                  emergencies, call{" "}
+                  <a href="tel:+19197984452" className="underline">
+                    (919) 798-4452
+                  </a>
+                  .
                 </p>
-              ) : (
+              )}
+
+              {status === "error" && (
+                <p
+                  role="alert"
+                  className="mt-4 rounded-md border border-red-500/40 bg-red-500/10 p-3 text-sm text-ink"
+                >
+                  {errorMessage} Call{" "}
+                  <a href="tel:+19197984452" className="underline">
+                    (919) 798-4452
+                  </a>{" "}
+                  and Derek will get you sorted.
+                </p>
+              )}
+
+              {status === "idle" && (
                 <p className="mt-3 text-xs text-muted">
                   By submitting, you agree to be contacted about your service
                   request.

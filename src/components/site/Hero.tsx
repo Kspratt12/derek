@@ -16,10 +16,10 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-[0.18]"
+          className="object-cover opacity-[0.35]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-bg via-bg/85 to-bg" />
-        <div className="absolute inset-0 grid-lines opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/75 to-bg" />
+        <div className="absolute inset-0 grid-lines opacity-40" />
       </div>
 
       <div className="container relative flex min-h-[92vh] flex-col justify-center py-20 sm:min-h-[90vh] sm:py-24 lg:py-28">
