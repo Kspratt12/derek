@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Big_Shoulders_Display, Inter } from "next/font/google";
+import { Inter, Oswald } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,10 +8,10 @@ const inter = Inter({
   display: "swap",
 });
 
-const bigShoulders = Big_Shoulders_Display({
+const oswald = Oswald({
   subsets: ["latin"],
   variable: "--font-heading",
-  weight: ["500", "600", "700", "800", "900"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
@@ -155,7 +155,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${bigShoulders.variable}`}>
+    <html lang="en" className={`${inter.variable} ${oswald.variable}`}>
       <body>
         <script
           type="application/ld+json"

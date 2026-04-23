@@ -52,93 +52,97 @@ export function Services() {
           </p>
         </Reveal>
 
-        {/* ROW 1: Mobile Auto Repair. Photo on left, text on right. */}
-        <Reveal className="mt-16">
-          <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-10">
-            <div className="relative lg:col-span-6">
-              <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-accent/30 to-transparent blur-xl" />
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-accent/20 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]">
-                <Image
-                  src="/images/parts.jpg"
-                  alt="Two suspension components side by side showing the worn original and the fresh replacement"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                  quality={92}
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              </div>
-
+        {/* ROW 1: Mobile Auto Repair. Photo slides from left, text from right. */}
+        <div className="mt-16 grid items-stretch gap-8 lg:grid-cols-12 lg:gap-10">
+          <Reveal direction="left" className="relative lg:col-span-6">
+            <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-accent/30 to-transparent blur-xl" />
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-accent/20 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]">
+              <Image
+                src="/images/parts.jpg"
+                alt="Two suspension components side by side showing the worn original and the fresh replacement"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+                quality={92}
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             </div>
+          </Reveal>
 
-            <div className="flex flex-col justify-center lg:col-span-6">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30">
-                  <Wrench className="h-6 w-6 text-accent-hover" aria-hidden />
-                </span>
-                <p className="eyebrow">Primary Service</p>
-              </div>
-              <h3 className="mt-5 font-heading text-3xl font-bold uppercase text-ink sm:text-4xl lg:text-5xl">
-                Mobile Auto Repair
-              </h3>
-              <p className="mt-4 text-lg text-ink/80">
-                Cars, trucks, SUVs. Diagnostics through final torque, right
-                where your vehicle sits. Parts and tools in the truck, job
-                done where you parked.
-              </p>
-              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                {mobileRepair.map((item) => (
-                  <Bullet key={item} label={item} />
-                ))}
-              </ul>
+          <Reveal
+            direction="right"
+            delay={0.15}
+            className="flex flex-col justify-center lg:col-span-6"
+          >
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30">
+                <Wrench className="h-6 w-6 text-accent-hover" aria-hidden />
+              </span>
+              <p className="eyebrow">Primary Service</p>
             </div>
-          </div>
-        </Reveal>
+            <h3 className="mt-5 font-heading text-3xl font-bold uppercase text-ink sm:text-4xl lg:text-5xl">
+              Mobile Auto Repair
+            </h3>
+            <p className="mt-4 text-lg text-ink/80">
+              Cars, trucks, SUVs. Diagnostics through final torque, right
+              where your vehicle sits. Parts and tools in the truck, job
+              done where you parked.
+            </p>
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              {mobileRepair.map((item) => (
+                <Bullet key={item} label={item} />
+              ))}
+            </ul>
+          </Reveal>
+        </div>
 
-        {/* ROW 2: Fleet. Text on left, photo on right. Alternating rhythm. */}
-        <Reveal className="mt-20" delay={0.1}>
-          <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-10">
-            <div className="order-2 flex flex-col justify-center lg:order-1 lg:col-span-6">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30">
-                  <Truck className="h-6 w-6 text-accent-hover" aria-hidden />
-                </span>
-                <p className="eyebrow">For Businesses</p>
-              </div>
-              <h3 className="mt-5 font-heading text-3xl font-bold uppercase text-ink sm:text-4xl lg:text-5xl">
-                Fleet Maintenance
-                <span className="block text-accent-hover">& Washing</span>
-              </h3>
-              <p className="mt-4 text-lg text-ink/80">
-                Your trucks earn when they&apos;re on the road. Derek works
-                around your schedule (after hours, weekends, at your lot) so
-                downtime doesn&apos;t cost billable days.
-              </p>
-              <ul className="mt-6 grid gap-3">
-                {fleet.map((item) => (
-                  <Bullet key={item} label={item} />
-                ))}
-              </ul>
+        {/* ROW 2: Fleet. Text slides from left, photo slides from right. */}
+        <div className="mt-20 grid items-stretch gap-8 lg:grid-cols-12 lg:gap-10">
+          <Reveal
+            direction="left"
+            className="order-2 flex flex-col justify-center lg:order-1 lg:col-span-6"
+          >
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30">
+                <Truck className="h-6 w-6 text-accent-hover" aria-hidden />
+              </span>
+              <p className="eyebrow">For Businesses</p>
             </div>
+            <h3 className="mt-5 font-heading text-3xl font-bold uppercase text-ink sm:text-4xl lg:text-5xl">
+              Fleet Maintenance
+              <span className="block text-accent-hover">& Washing</span>
+            </h3>
+            <p className="mt-4 text-lg text-ink/80">
+              Your trucks earn when they&apos;re on the road. Derek works
+              around your schedule (after hours, weekends, at your lot) so
+              downtime doesn&apos;t cost billable days.
+            </p>
+            <ul className="mt-6 grid gap-3">
+              {fleet.map((item) => (
+                <Bullet key={item} label={item} />
+              ))}
+            </ul>
+          </Reveal>
 
-            <div className="relative order-1 lg:order-2 lg:col-span-6">
-              <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-bl from-accent/30 to-transparent blur-xl" />
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-accent/20 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]">
-                <Image
-                  src="/images/pics-2.jpg"
-                  alt="Heavy-duty clutch components in their shipping boxes ready for installation"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                  quality={92}
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              </div>
-
+          <Reveal
+            direction="right"
+            delay={0.15}
+            className="relative order-1 lg:order-2 lg:col-span-6"
+          >
+            <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-bl from-accent/30 to-transparent blur-xl" />
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-accent/20 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]">
+              <Image
+                src="/images/pics-2.jpg"
+                alt="Heavy-duty clutch components in their shipping boxes ready for installation"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+                quality={92}
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             </div>
-          </div>
-        </Reveal>
-
+          </Reveal>
+        </div>
       </div>
     </section>
   );

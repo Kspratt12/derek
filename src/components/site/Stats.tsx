@@ -174,9 +174,9 @@ export function Stats() {
                   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
                 },
               }}
-              className="group flex items-start gap-4"
+              className="group flex cursor-default items-start gap-4 transition-transform duration-300 hover:-translate-y-0.5"
             >
-              <span className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30 transition-colors group-hover:bg-accent/25">
+              <span className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30 transition-all duration-300 group-hover:scale-110 group-hover:bg-accent/30 group-hover:ring-accent/60">
                 <Icon className="h-5 w-5 text-accent-hover" />
               </span>
               <div>

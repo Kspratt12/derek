@@ -44,9 +44,10 @@ export function Testimonials() {
         <StaggerGroup
           className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8 lg:gap-12"
           stagger={0.12}
+          direction="scale"
         >
           {promises.map(({ n, pullQuote, body }) => (
-            <StaggerItem key={n}>
+            <StaggerItem key={n} direction="scale">
               <article className="relative pt-8">
                 <span
                   aria-hidden
