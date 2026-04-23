@@ -65,22 +65,22 @@ export function Hero() {
           <motion.h1
             {...fadeUp(0.1)}
             id="hero-heading"
-            className="font-heading text-5xl font-bold uppercase leading-[0.95] tracking-tight text-ink sm:text-6xl md:text-7xl lg:text-[88px]"
+            className="font-heading text-5xl font-bold uppercase leading-[0.95] tracking-tight text-ink sm:text-6xl md:text-7xl lg:text-[84px]"
           >
+            Raleigh&apos;s
+            <br />
             Mobile Mechanic
             <br />
-            That Comes
-            <br />
-            <span className="text-accent-hover">To You.</span>
+            <span className="text-accent-hover">Comes To You.</span>
           </motion.h1>
 
           <motion.p
             {...fadeUp(0.25)}
             className="mt-6 max-w-2xl text-lg text-ink/80 sm:text-xl"
           >
-            Trustworthy, reliable auto repair in Raleigh, Clayton, Garner,
-            and Smithfield. No tow truck. No waiting room. Just quality work
-            at your driveway.
+            On-site auto repair in Raleigh, Clayton, Garner, Smithfield,
+            Knightdale, and Wendell. No tow truck. No waiting room. Just
+            quality work at your driveway.
           </motion.p>
 
           <motion.div

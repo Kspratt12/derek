@@ -1,4 +1,6 @@
 import { ArrowRight, Facebook, Star } from "lucide-react";
+// Star still used for the 5-star visual below the heading.
+import { GoogleIcon } from "./GoogleIcon";
 import { Reveal } from "./Reveal";
 
 // Swap GOOGLE_REVIEW_URL once Derek sets up his Google Business Profile.
@@ -62,15 +64,15 @@ export function FirstReview() {
                   href={GOOGLE_REVIEW_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-shine inline-flex h-14 items-center justify-center gap-2 rounded-md bg-accent px-8 font-heading text-base font-semibold uppercase tracking-wide text-ink transition-all hover:bg-accent-hover hover:-translate-y-[1px] hover:shadow-[0_10px_30px_-8px_rgba(45,80,22,0.5)] sm:text-lg"
+                  className="btn-shine inline-flex h-14 items-center justify-center gap-2 rounded-md bg-white px-8 font-heading text-base font-semibold uppercase tracking-wide text-gray-900 transition-all hover:-translate-y-[1px] hover:shadow-[0_10px_30px_-8px_rgba(0,0,0,0.5)] sm:text-lg"
                 >
-                  <Star className="h-5 w-5 fill-current" />
+                  <GoogleIcon className="h-5 w-5" />
                   Leave A Google Review
                   <ArrowRight className="h-5 w-5" />
                 </a>
               ) : (
                 <span className="inline-flex h-14 items-center justify-center gap-2 rounded-md border-2 border-dashed border-accent/40 bg-bg/40 px-8 font-heading text-base font-semibold uppercase tracking-wide text-muted sm:text-lg">
-                  <Star className="h-5 w-5" />
+                  <GoogleIcon className="h-5 w-5 opacity-60" />
                   Google Reviews Coming Soon
                 </span>
               )}
