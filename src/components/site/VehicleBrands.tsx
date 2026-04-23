@@ -62,13 +62,13 @@ export function VehicleBrands() {
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-bg to-transparent sm:w-32" />
 
         <ul
-          className="flex w-max animate-marquee-slow items-center gap-14 group-hover/marquee:[animation-play-state:paused] motion-reduce:animate-none sm:gap-20"
+          className="flex w-max animate-marquee-slow items-center group-hover/marquee:[animation-play-state:paused] motion-reduce:animate-none"
           style={{ willChange: "transform" }}
         >
           {loop.map(({ name, src, scale = 1 }, i) => (
             <li
               key={`${name}-${i}`}
-              className="flex h-12 w-[120px] flex-none items-center justify-center sm:h-14 sm:w-[140px]"
+              className="flex h-12 w-[120px] flex-none items-center justify-center pr-14 sm:h-14 sm:w-[140px] sm:pr-20"
               aria-label={name}
             >
               <div
