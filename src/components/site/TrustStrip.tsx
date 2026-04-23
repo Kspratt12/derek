@@ -14,6 +14,7 @@ const brands: Brand[] = [
   { name: "Moog", src: "/images/moog.png" },
   { name: "Denso", src: "/images/denso.png" },
   { name: "Snap-On", src: "/images/snap-on.png" },
+  { name: "Milwaukee", src: "/images/Milwaukee.png" },
 ];
 
 export function TrustStrip() {
