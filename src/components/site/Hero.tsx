@@ -1,12 +1,52 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+} from "framer-motion";
 import { Phone, ArrowRight, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+type HeroSlide = {
+  src: string;
+  alt: string;
+  objectPosition: string;
+};
+
+const slides: HeroSlide[] = [
+  {
+    src: "/images/main-hero.png",
+    alt: "",
+    objectPosition: "center 40%",
+  },
+  {
+    src: "/images/hero-2.png",
+    alt: "",
+    objectPosition: "center 35%",
+  },
+  {
+    src: "/images/hero-1.png",
+    alt: "",
+    objectPosition: "center 35%",
+  },
+];
+
+const SLIDE_DURATION_MS = 7000;
+
 export function Hero() {
   const shouldReduce = useReducedMotion();
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (shouldReduce) return;
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+    }, SLIDE_DURATION_MS);
+    return () => clearInterval(timer);
+  }, [shouldReduce]);
 
   const fadeUp = (delay: number) => ({
     initial: shouldReduce ? false : { opacity: 0, y: 24 },
@@ -21,22 +61,40 @@ export function Hero() {
       className="relative isolate overflow-hidden"
     >
       <div className="absolute inset-0 -z-10">
-        <Image
-          src="/images/hero-1.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-[0.8]"
-          style={{ objectPosition: "center 35%" }}
-        />
-        {/* Darken only the left column where text lives. Right side
-            shows the photo through cleanly. */}
-        <div className="absolute inset-0 bg-gradient-to-r from-bg/85 via-bg/40 to-transparent" />
-        {/* Light bottom fade to blend into next section. */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg/60" />
+        {/* Cinematic crossfade slideshow with slow Ken Burns zoom. */}
+        <AnimatePresence initial={false}>
+          <motion.div
+            key={slides[index].src}
+            className="absolute inset-0"
+            initial={{ opacity: 0, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              opacity: { duration: 1.6, ease: "easeInOut" },
+              scale: {
+                duration: SLIDE_DURATION_MS / 1000 + 2,
+                ease: "linear",
+              },
+            }}
+          >
+            <Image
+              src={slides[index].src}
+              alt={slides[index].alt}
+              fill
+              priority={index === 0}
+              sizes="100vw"
+              className="object-cover opacity-[0.85]"
+              style={{ objectPosition: slides[index].objectPosition }}
+            />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Left-column darken for text readability; right side shows photo. */}
+        <div className="absolute inset-0 bg-gradient-to-r from-bg/90 via-bg/50 to-transparent" />
+        {/* Bottom fade into the next section. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg/70" />
         {/* Green accent wash top-right. */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_30%,rgba(45,80,22,0.18),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_30%,rgba(45,80,22,0.22),transparent_55%)]" />
         <div className="absolute inset-0 grid-lines opacity-20" />
       </div>
 
@@ -85,8 +143,8 @@ export function Hero() {
             {...fadeUp(0.4)}
             className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4"
           >
-            {/* Call button is hidden on mobile because the sticky bottom
-                MobileCallBar already provides a persistent CALL DEREK CTA. */}
+            {/* Call button hidden on mobile because the sticky MobileCallBar
+                already provides a persistent CALL DEREK CTA. */}
             <Button
               asChild
               size="lg"
@@ -97,11 +155,7 @@ export function Hero() {
                 Call (919) 798-4452
               </a>
             </Button>
-            <Button
-              asChild
-              size="lg"
-              className="w-full sm:hidden"
-            >
+            <Button asChild size="lg" className="w-full sm:hidden">
               <a href="#contact" className="gap-2">
                 Request Service
                 <ArrowRight className="h-5 w-5" />
@@ -109,7 +163,6 @@ export function Hero() {
             </Button>
             <Button
               asChild
-              variant="outline"
               size="lg"
               className="hidden w-full sm:inline-flex sm:w-auto"
             >
@@ -132,6 +185,27 @@ export function Hero() {
               <MapPin className="h-4 w-4 text-accent-hover" aria-hidden />
               Raleigh NC and surrounding areas
             </span>
+          </motion.div>
+
+          {/* Slide indicators: dots at the bottom of the hero */}
+          <motion.div
+            {...fadeUp(0.7)}
+            className="mt-10 flex items-center gap-2"
+            aria-hidden
+          >
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setIndex(i)}
+                aria-label={`Show hero slide ${i + 1}`}
+                className={`h-1 rounded-full transition-all duration-500 ${
+                  index === i
+                    ? "w-10 bg-accent-hover"
+                    : "w-4 bg-ink/25 hover:bg-ink/50"
+                }`}
+              />
+            ))}
           </motion.div>
         </div>
       </div>
