@@ -3,33 +3,6 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
-function PickupSilhouette({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 220 90"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden
-      className={className}
-    >
-      {/* Cab + bed body */}
-      <path
-        d="M10 65 L10 55 Q10 45 20 42 L50 42 L60 22 Q62 18 68 18 L105 18 Q112 18 116 24 L130 42 L200 42 Q210 42 210 52 L210 65 L160 65 Q160 75 150 75 Q140 75 140 65 L80 65 Q80 75 70 75 Q60 75 60 65 Z"
-        fill="currentColor"
-      />
-      {/* Windows */}
-      <path
-        d="M70 26 L102 26 Q106 26 109 30 L120 40 L70 40 Z"
-        fill="rgba(26,26,26,0.75)"
-      />
-      {/* Wheels */}
-      <circle cx="70" cy="68" r="9" fill="#0f0f0f" />
-      <circle cx="70" cy="68" r="4" fill="currentColor" opacity="0.4" />
-      <circle cx="150" cy="68" r="9" fill="#0f0f0f" />
-      <circle cx="150" cy="68" r="4" fill="currentColor" opacity="0.4" />
-    </svg>
-  );
-}
-
 export function SignatureBand() {
   const shouldReduce = useReducedMotion();
 
@@ -127,47 +100,6 @@ export function SignatureBand() {
         </div>
       </div>
 
-      {/* Driving truck along the section baseline. Rolls in from right,
-          settles at the left, leaves a fading dust puff behind. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute bottom-0 left-0 right-0 h-20 overflow-hidden"
-      >
-        {/* Baseline rule */}
-        <div className="absolute bottom-5 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
-
-        {!shouldReduce && (
-          <>
-            {/* Dust puff fades in then out slightly after truck settles */}
-            <motion.div
-              initial={{ opacity: 0, x: "85vw", scale: 0.5 }}
-              whileInView={{
-                opacity: [0, 0.4, 0],
-                x: ["85vw", "22vw", "18vw"],
-                scale: [0.5, 1.4, 1.8],
-              }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 3.2, times: [0, 0.7, 1], ease: "easeOut" }}
-              className="absolute bottom-3 h-10 w-24 rounded-full bg-ink/30 blur-xl"
-            />
-
-            {/* The truck */}
-            <motion.div
-              initial={{ x: "110vw" }}
-              whileInView={{ x: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{
-                duration: 2.8,
-                ease: [0.22, 0.8, 0.3, 1],
-              }}
-              className="absolute bottom-2 left-[6%] sm:left-[8%]"
-              style={{ willChange: "transform" }}
-            >
-              <PickupSilhouette className="h-10 w-auto text-accent-hover/80 sm:h-12" />
-            </motion.div>
-          </>
-        )}
-      </div>
 
       {/* Rotated corner stamp */}
       <motion.div
