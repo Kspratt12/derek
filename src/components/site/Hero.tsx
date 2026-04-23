@@ -27,9 +27,16 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-[0.6]"
+          className="object-cover opacity-[0.5]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-bg/40 via-bg/55 to-bg/90" />
+        {/* Base gradient: darker at top and bottom so text always has a
+            readable canvas; lighter through the center so the photo
+            still reads. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-bg/80 via-bg/50 to-bg/95" />
+        {/* Focal darken behind the left-column text so headline and
+            eyebrow sit on a readable canvas even against the cream
+            garage walls in the photo. */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_45%,rgba(15,15,15,0.7),transparent_55%)]" />
         <div className="absolute inset-0 grid-lines opacity-30" />
         {!shouldReduce && (
           <motion.div
