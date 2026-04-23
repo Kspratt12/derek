@@ -30,7 +30,7 @@ export function TrustStrip() {
   return (
     <section
       aria-label="Parts brands Derek installs"
-      className="relative border-y border-border bg-bg/80 py-14 sm:py-16"
+      className="relative border-y border-border bg-bg/80 py-10 sm:py-12"
     >
       <div className="container">
         <div className="flex flex-col items-center gap-3 text-center">
@@ -52,15 +52,12 @@ export function TrustStrip() {
 
       {/* Scrolling marquee, matching the vehicle-brands treatment.
           Paused on hover so users can inspect any single logo. */}
-      <div
-        aria-hidden
-        className="group/marquee relative mt-10 overflow-hidden"
-      >
+      <div aria-hidden className="relative mt-7 overflow-hidden">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-bg to-transparent sm:w-32" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-bg to-transparent sm:w-32" />
 
         <ul
-          className="flex w-max animate-marquee-slow items-center group-hover/marquee:[animation-play-state:paused] motion-reduce:animate-none"
+          className="flex w-max animate-marquee-slow items-center motion-reduce:animate-none"
           style={{ willChange: "transform" }}
         >
           {loop.map(({ name, src }, i) => (
