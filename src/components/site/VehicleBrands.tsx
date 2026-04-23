@@ -4,18 +4,17 @@ import { Car } from "lucide-react";
 type VehicleBrand = {
   name: string;
   src: string;
-  // Logos with extra whitespace inside the PNG get scaled up to match visual weight.
   scale?: number;
 };
 
 const vehicleBrands: VehicleBrand[] = [
   { name: "Ford", src: "/images/vehicles/ford.png" },
-  { name: "Chevrolet", src: "/images/vehicles/chevrolet.png", scale: 1.45 },
+  { name: "Chevrolet", src: "/images/vehicles/chevrolet.png" },
   { name: "Toyota", src: "/images/vehicles/toyota.png" },
-  { name: "Honda", src: "/images/vehicles/honda.png", scale: 1.2 },
+  { name: "Honda", src: "/images/vehicles/honda.png", scale: 1.15 },
   { name: "Nissan", src: "/images/vehicles/nissan.png" },
   { name: "Jeep", src: "/images/vehicles/jeep.png" },
-  { name: "Ram", src: "/images/vehicles/ram.png", scale: 1.35 },
+  { name: "Ram", src: "/images/vehicles/ram.png" },
   { name: "GMC", src: "/images/vehicles/gmc.png" },
   { name: "Subaru", src: "/images/vehicles/subaru.png" },
   { name: "Hyundai", src: "/images/vehicles/hyundai.png" },
@@ -25,6 +24,9 @@ const ENABLED = true;
 
 export function VehicleBrands() {
   if (!ENABLED) return null;
+
+  // Double the array so the loop seam is invisible at -50% translate.
+  const loop = [...vehicleBrands, ...vehicleBrands];
 
   return (
     <section
@@ -47,34 +49,50 @@ export function VehicleBrands() {
             and old.
           </p>
         </div>
+      </div>
 
-        <ul className="mx-auto mt-10 grid max-w-5xl grid-cols-2 items-start justify-items-center gap-x-4 gap-y-10 sm:grid-cols-5 sm:gap-x-6 lg:gap-x-8">
-          {vehicleBrands.map(({ name, src, scale = 1 }) => (
+      {/* Marquee band: full-bleed, pauses on hover */}
+      <div
+        aria-hidden
+        className="group/marquee relative mt-10 overflow-hidden"
+      >
+        {/* Edge fades so logos feather in and out of view */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-bg to-transparent sm:w-32" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-bg to-transparent sm:w-32" />
+
+        <ul
+          className="flex w-max animate-marquee-slow items-center gap-14 group-hover/marquee:[animation-play-state:paused] motion-reduce:animate-none sm:gap-20"
+          style={{ willChange: "transform" }}
+        >
+          {loop.map(({ name, src, scale = 1 }, i) => (
             <li
-              key={name}
-              className="group flex w-full max-w-[130px] flex-col items-center gap-3"
+              key={`${name}-${i}`}
+              className="flex h-12 w-[120px] flex-none items-center justify-center sm:h-14 sm:w-[140px]"
+              aria-label={name}
             >
-              <div className="relative flex h-14 w-full items-center justify-center">
-                <div
-                  className="relative h-full w-full opacity-70 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
-                  style={{ transform: `scale(${scale})` }}
-                >
-                  <Image
-                    src={src}
-                    alt={`${name} logo`}
-                    fill
-                    sizes="130px"
-                    className="object-contain"
-                  />
-                </div>
+              <div
+                className="relative h-full w-full opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                style={{ transform: `scale(${scale})` }}
+              >
+                <Image
+                  src={src}
+                  alt={`${name} logo`}
+                  fill
+                  sizes="140px"
+                  className="object-contain"
+                />
               </div>
-              <span className="font-heading text-[10px] font-semibold uppercase tracking-[0.25em] text-muted transition-colors group-hover:text-ink">
-                {name}
-              </span>
             </li>
           ))}
         </ul>
       </div>
+
+      {/* Screen-reader-accessible list (marquee itself is aria-hidden for AT users) */}
+      <ul className="sr-only">
+        {vehicleBrands.map(({ name }) => (
+          <li key={name}>{name}</li>
+        ))}
+      </ul>
     </section>
   );
 }
