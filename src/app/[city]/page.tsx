@@ -53,7 +53,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
   const citySchema = {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
-    name: `Derek's Maintenance LLC — Mobile Mechanic ${city.fullName}`,
+    name: `Derek's Maintenance LLC · Mobile Mechanic ${city.fullName}`,
     image: "https://dereksmaintenance.com/images/logo.jpg",
     "@id": `https://dereksmaintenance.com/${city.slug}`,
     url: `https://dereksmaintenance.com/${city.slug}`,
