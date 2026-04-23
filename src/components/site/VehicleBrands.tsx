@@ -4,22 +4,19 @@ import { Car } from "lucide-react";
 type VehicleBrand = {
   name: string;
   src: string;
+  // Logos with extra whitespace inside the PNG get scaled up to match visual weight.
+  scale?: number;
 };
 
-// Drop logo files into /public/images/vehicles/ (transparent PNG or SVG preferred).
-// Filename should match the src path below. When all 8 required are uploaded,
-// this strip renders; otherwise the whole section is hidden.
-// Grab clean logos from brandfetch.com.
 const vehicleBrands: VehicleBrand[] = [
   { name: "Ford", src: "/images/vehicles/ford.png" },
-  { name: "Chevrolet", src: "/images/vehicles/chevrolet.png" },
+  { name: "Chevrolet", src: "/images/vehicles/chevrolet.png", scale: 1.45 },
   { name: "Toyota", src: "/images/vehicles/toyota.png" },
-  { name: "Honda", src: "/images/vehicles/honda.png" },
+  { name: "Honda", src: "/images/vehicles/honda.png", scale: 1.2 },
   { name: "Nissan", src: "/images/vehicles/nissan.png" },
   { name: "Jeep", src: "/images/vehicles/jeep.png" },
-  { name: "Ram", src: "/images/vehicles/ram.png" },
+  { name: "Ram", src: "/images/vehicles/ram.png", scale: 1.35 },
   { name: "GMC", src: "/images/vehicles/gmc.png" },
-  // Optional extras (component renders any that exist in the array).
   { name: "Subaru", src: "/images/vehicles/subaru.png" },
   { name: "Hyundai", src: "/images/vehicles/hyundai.png" },
 ];
@@ -52,13 +49,16 @@ export function VehicleBrands() {
         </div>
 
         <ul className="mx-auto mt-10 grid max-w-5xl grid-cols-2 items-start justify-items-center gap-x-4 gap-y-10 sm:grid-cols-5 sm:gap-x-6 lg:gap-x-8">
-          {vehicleBrands.map(({ name, src }) => (
+          {vehicleBrands.map(({ name, src, scale = 1 }) => (
             <li
               key={name}
               className="group flex w-full max-w-[130px] flex-col items-center gap-3"
             >
               <div className="relative flex h-14 w-full items-center justify-center">
-                <div className="relative h-full w-full opacity-70 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+                <div
+                  className="relative h-full w-full opacity-70 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                  style={{ transform: `scale(${scale})` }}
+                >
                   <Image
                     src={src}
                     alt={`${name} logo`}

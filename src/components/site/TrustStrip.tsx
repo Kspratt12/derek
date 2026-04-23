@@ -43,26 +43,22 @@ export function TrustStrip() {
           </p>
         </div>
 
-        <ul className="mx-auto mt-10 grid max-w-5xl grid-cols-3 items-start justify-items-center gap-x-2 gap-y-10 sm:grid-cols-4 sm:gap-x-6 md:grid-cols-4 lg:grid-cols-8 lg:gap-x-6">
+        <ul className="mx-auto mt-10 grid max-w-5xl grid-cols-3 items-center justify-items-center gap-x-4 gap-y-8 sm:grid-cols-4 sm:gap-x-6 md:grid-cols-4 lg:grid-cols-8 lg:gap-x-6">
           {brands.map(({ name, src }) => (
             <li
               key={name}
-              className="group flex w-full max-w-[130px] flex-col items-center gap-3"
+              className="flex h-12 w-full max-w-[130px] items-center justify-center sm:h-14"
+              aria-label={name}
             >
-              <div className="relative flex h-12 w-full items-center justify-center">
-                <div className="relative h-full w-full opacity-70 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
-                  <Image
-                    src={src}
-                    alt={`${name} logo`}
-                    fill
-                    sizes="130px"
-                    className="object-contain"
-                  />
-                </div>
+              <div className="relative h-full w-full opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0">
+                <Image
+                  src={src}
+                  alt={`${name} logo`}
+                  fill
+                  sizes="130px"
+                  className="object-contain"
+                />
               </div>
-              <span className="font-heading text-[10px] font-semibold uppercase tracking-[0.25em] text-muted transition-colors group-hover:text-ink">
-                {name}
-              </span>
             </li>
           ))}
         </ul>

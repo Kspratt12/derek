@@ -29,79 +29,52 @@ export function Testimonials() {
     <section
       id="promise"
       aria-labelledby="promise-heading"
-      className="relative overflow-hidden py-24 sm:py-32"
+      className="relative overflow-hidden py-20 sm:py-24"
     >
       <div className="container">
         <Reveal className="mx-auto max-w-3xl text-center">
           <p className="eyebrow">My Word On It</p>
-          <h2
-            id="promise-heading"
-            className="section-title mt-3"
-          >
+          <h2 id="promise-heading" className="section-title mt-3">
             Three Things
             <br />
             <span className="text-accent-hover">I Don&apos;t Break On.</span>
           </h2>
         </Reveal>
 
-        <StaggerGroup className="mt-20 space-y-24 sm:space-y-32" stagger={0.15}>
-          {promises.map(({ n, pullQuote, body }, i) => {
-            const isRight = i % 2 === 1;
-            return (
-              <StaggerItem key={n}>
-                <article
-                  className={`relative grid items-center gap-8 lg:grid-cols-12 ${
-                    isRight ? "" : ""
-                  }`}
+        <StaggerGroup
+          className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8 lg:gap-12"
+          stagger={0.12}
+        >
+          {promises.map(({ n, pullQuote, body }) => (
+            <StaggerItem key={n}>
+              <article className="relative pt-8">
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -top-2 left-0 select-none font-heading font-bold leading-none text-accent/15"
+                  style={{ fontSize: "clamp(5rem, 9vw, 8rem)" }}
                 >
-                  {/* Ghost number as oversized background type */}
-                  <div
-                    aria-hidden
-                    className={`pointer-events-none absolute top-1/2 -translate-y-1/2 select-none font-heading font-bold leading-none text-accent/10 ${
-                      isRight ? "right-0 lg:right-[-2%]" : "left-0 lg:left-[-2%]"
-                    }`}
-                    style={{ fontSize: "clamp(10rem, 22vw, 20rem)" }}
-                  >
-                    {n}
-                  </div>
+                  {n}
+                </span>
 
+                <div className="relative">
+                  <p className="font-heading text-[10px] font-bold uppercase tracking-[0.35em] text-accent-hover">
+                    Promise {n}
+                  </p>
+                  <p className="mt-3 font-heading text-2xl font-bold uppercase leading-[1] tracking-tight text-ink sm:text-3xl lg:text-[32px]">
+                    &ldquo;{pullQuote}&rdquo;
+                  </p>
+                  <p className="mt-4 text-ink/75">{body}</p>
                   <div
-                    className={`relative lg:col-span-7 ${
-                      isRight
-                        ? "lg:col-start-6 lg:text-right"
-                        : "lg:col-start-1 lg:col-end-8"
-                    }`}
-                  >
-                    <p className="font-heading text-xs font-bold uppercase tracking-[0.4em] text-accent-hover">
-                      Promise {n}
-                    </p>
-                    <p
-                      className="mt-4 font-heading font-bold uppercase leading-[0.95] tracking-tight text-ink"
-                      style={{ fontSize: "clamp(2.25rem, 6.5vw, 5rem)" }}
-                    >
-                      &ldquo;{pullQuote}&rdquo;
-                    </p>
-                    <p
-                      className={`mt-6 max-w-xl text-lg text-ink/75 sm:text-xl ${
-                        isRight ? "lg:ml-auto" : ""
-                      }`}
-                    >
-                      {body}
-                    </p>
-                    <div
-                      className={`mt-6 inline-block h-[3px] w-20 bg-accent-hover ${
-                        isRight ? "lg:ml-auto lg:block" : ""
-                      }`}
-                      aria-hidden
-                    />
-                  </div>
-                </article>
-              </StaggerItem>
-            );
-          })}
+                    className="mt-5 h-[2px] w-14 bg-accent-hover"
+                    aria-hidden
+                  />
+                </div>
+              </article>
+            </StaggerItem>
+          ))}
         </StaggerGroup>
 
-        <Reveal className="mt-20 text-center" delay={0.2}>
+        <Reveal className="mt-14 text-center" delay={0.2}>
           <p className="flex items-center justify-center gap-3 font-heading text-sm uppercase tracking-[0.35em] text-muted">
             <span aria-hidden className="inline-block h-px w-8 bg-accent-hover" />
             <span className="text-accent-hover">Derek</span>
