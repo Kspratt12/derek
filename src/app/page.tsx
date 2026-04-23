@@ -1,6 +1,7 @@
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { Contact } from "@/components/site/Contact";
 import { FAQ } from "@/components/site/FAQ";
+import { FirstReview } from "@/components/site/FirstReview";
 import { Footer } from "@/components/site/Footer";
 import { Gallery } from "@/components/site/Gallery";
 import { Header } from "@/components/site/Header";
@@ -31,6 +32,7 @@ export default function HomePage() {
         <Gallery />
         <BeforeAfter />
         <Testimonials />
+        <FirstReview />
         <FAQ />
         <Contact />
       </main>

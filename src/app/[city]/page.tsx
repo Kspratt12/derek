@@ -5,6 +5,7 @@ import { ArrowRight, Clock, MapPin, Phone, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Contact } from "@/components/site/Contact";
 import { FAQ } from "@/components/site/FAQ";
+import { FirstReview } from "@/components/site/FirstReview";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { HowItWorks } from "@/components/site/HowItWorks";
@@ -49,9 +50,50 @@ export default function CityPage({ params }: { params: { city: string } }) {
 
   const otherCities = cities.filter((c) => c.slug !== city.slug);
 
+  const citySchema = {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    name: `Derek's Maintenance LLC — Mobile Mechanic ${city.fullName}`,
+    image: "https://dereksmaintenance.com/images/logo.jpg",
+    "@id": `https://dereksmaintenance.com/${city.slug}`,
+    url: `https://dereksmaintenance.com/${city.slug}`,
+    telephone: "+1-919-798-4452",
+    email: "dereksmaintenance@gmail.com",
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: city.name,
+      addressRegion: "NC",
+      addressCountry: "US",
+    },
+    areaServed: {
+      "@type": "City",
+      name: city.name,
+      containedInPlace: { "@type": "AdministrativeArea", name: city.county },
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "00:00",
+      closes: "23:59",
+    },
+  };
+
   return (
     <>
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(citySchema) }}
+      />
       <main>
         <section
           id="top"
@@ -218,6 +260,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
 
         <HowItWorks />
         <Testimonials />
+        <FirstReview />
         <FAQ />
 
         <section className="border-y border-border bg-surface/20 py-16">
