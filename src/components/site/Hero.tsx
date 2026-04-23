@@ -27,26 +27,17 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-[0.5]"
+          className="object-cover opacity-[0.8]"
           style={{ objectPosition: "center 35%" }}
         />
-        {/* Primary darken so headline sits on a readable canvas. */}
-        <div className="absolute inset-0 bg-gradient-to-r from-bg/95 via-bg/70 to-bg/50" />
-        {/* Secondary top/bottom gradient to frame the text column. */}
-        <div className="absolute inset-0 bg-gradient-to-b from-bg/60 via-transparent to-bg/85" />
-        {/* Green accent wash bleeds in from the right. */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_30%,rgba(45,80,22,0.2),transparent_55%)]" />
-        <div className="absolute inset-0 grid-lines opacity-25" />
-
-        {!shouldReduce && (
-          <motion.div
-            aria-hidden
-            className="absolute inset-0 bg-[radial-gradient(circle_at_15%_50%,rgba(15,15,15,0.4),transparent_60%)]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.4 }}
-          />
-        )}
+        {/* Darken only the left column where text lives. Right side
+            shows the photo through cleanly. */}
+        <div className="absolute inset-0 bg-gradient-to-r from-bg/85 via-bg/40 to-transparent" />
+        {/* Light bottom fade to blend into next section. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg/60" />
+        {/* Green accent wash top-right. */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_30%,rgba(45,80,22,0.18),transparent_55%)]" />
+        <div className="absolute inset-0 grid-lines opacity-20" />
       </div>
 
       <div className="container relative flex min-h-[90vh] flex-col justify-center py-20 sm:min-h-[88vh] sm:py-24 lg:py-28">
@@ -94,7 +85,13 @@ export function Hero() {
             {...fadeUp(0.4)}
             className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4"
           >
-            <Button asChild size="lg" className="w-full sm:w-auto">
+            {/* Call button is hidden on mobile because the sticky bottom
+                MobileCallBar already provides a persistent CALL DEREK CTA. */}
+            <Button
+              asChild
+              size="lg"
+              className="hidden w-full sm:inline-flex sm:w-auto"
+            >
               <a href="tel:+19197984452" className="gap-2">
                 <Phone className="h-5 w-5" />
                 Call (919) 798-4452
@@ -102,9 +99,19 @@ export function Hero() {
             </Button>
             <Button
               asChild
+              size="lg"
+              className="w-full sm:hidden"
+            >
+              <a href="#contact" className="gap-2">
+                Request Service
+                <ArrowRight className="h-5 w-5" />
+              </a>
+            </Button>
+            <Button
+              asChild
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto"
+              className="hidden w-full sm:inline-flex sm:w-auto"
             >
               <a href="#contact" className="gap-2">
                 Request Service Online
