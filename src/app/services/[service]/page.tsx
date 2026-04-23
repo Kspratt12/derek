@@ -17,7 +17,6 @@ import { Header } from "@/components/site/Header";
 import { HowItWorks } from "@/components/site/HowItWorks";
 import { MobileCallBar } from "@/components/site/MobileCallBar";
 import { Testimonials } from "@/components/site/Testimonials";
-import { WhyDerek } from "@/components/site/WhyDerek";
 import { cities } from "@/lib/cities";
 import { services, getServiceBySlug } from "@/lib/services";
 
@@ -230,7 +229,6 @@ export default function ServicePage({
 
         <HowItWorks />
         <Testimonials />
-        <WhyDerek />
         <FAQ />
 
         <section className="border-y border-border bg-surface/20 py-16">

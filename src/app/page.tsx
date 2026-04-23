@@ -7,12 +7,12 @@ import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { HowItWorks } from "@/components/site/HowItWorks";
 import { Marquee } from "@/components/site/Marquee";
+import { MeetDerek } from "@/components/site/MeetDerek";
 import { MobileCallBar } from "@/components/site/MobileCallBar";
 import { Services } from "@/components/site/Services";
 import { Stats } from "@/components/site/Stats";
 import { Testimonials } from "@/components/site/Testimonials";
 import { TrustStrip } from "@/components/site/TrustStrip";
-import { WhyDerek } from "@/components/site/WhyDerek";
 
 export default function HomePage() {
   return (
@@ -22,13 +22,13 @@ export default function HomePage() {
         <Hero />
         <Marquee />
         <Stats />
+        <MeetDerek />
         <Services />
         <TrustStrip />
         <HowItWorks />
         <Gallery />
         <BeforeAfter />
         <Testimonials />
-        <WhyDerek />
         <FAQ />
         <Contact />
       </main>

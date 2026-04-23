@@ -1,77 +1,80 @@
-import { Quote, Star } from "lucide-react";
+import { ClipboardCheck, HandshakeIcon, Undo2 } from "lucide-react";
 import { Reveal, StaggerGroup, StaggerItem } from "./Reveal";
 
-// Swap these three placeholders with real Google reviews or customer quotes from Derek.
-// Keep the structure: short attribution, vehicle + job, 1-2 sentence quote.
-const testimonials = [
+type Promise = {
+  icon: typeof HandshakeIcon;
+  number: string;
+  title: string;
+  body: string;
+};
+
+const promises: Promise[] = [
   {
-    quote:
-      "Derek came to my driveway the same morning I called. Diagnosed the check engine light, had the part, got it done in under two hours. No shop, no tow, no runaround.",
-    name: "James R.",
-    detail: "2014 F-150, Raleigh",
+    icon: ClipboardCheck,
+    number: "01",
+    title: "I Quote Before I Work",
+    body: "No wrench turns until you've seen the price and said yes. If the job changes mid-way, I stop and tell you before I keep going.",
   },
   {
-    quote:
-      "We run a small fleet and downtime costs us. Derek shows up on our lot, works around our trucks being in and out, and his pricing doesn't move on us mid-job.",
-    name: "Marcus T.",
-    detail: "Fleet client, Garner",
+    icon: HandshakeIcon,
+    number: "02",
+    title: "I Show Up When I Say",
+    body: "Real time windows I actually keep. Not 'sometime between 8 and 5.' If I'm running late, you'll hear from me before the window closes.",
   },
   {
-    quote:
-      "My brakes were grinding on a Sunday night. Every shop was closed. Derek answered, quoted me honest, showed up Monday morning with rotors and pads.",
-    name: "Alicia H.",
-    detail: "2018 Nissan Rogue, Clayton",
+    icon: Undo2,
+    number: "03",
+    title: "If It's Not Right, I'm Back",
+    body: "My labor is backed by my name. Something I fixed isn't holding up, I come back and make it right. Parts carry manufacturer warranty on top of that.",
   },
 ];
 
 export function Testimonials() {
   return (
     <section
-      id="reviews"
-      aria-labelledby="reviews-heading"
+      id="promise"
+      aria-labelledby="promise-heading"
       className="relative py-20 sm:py-28"
     >
       <div className="container">
-        <Reveal className="max-w-3xl">
-          <p className="eyebrow">What Customers Say</p>
-          <h2 id="reviews-heading" className="section-title mt-3">
-            Real Jobs. Real Reviews.
-          </h2>
-          <p className="mt-4 text-lg text-muted">
-            Derek&apos;s business runs on referrals and repeat work. Here&apos;s
-            what people say after he shows up.
-          </p>
-        </Reveal>
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <Reveal className="lg:col-span-4">
+            <p className="eyebrow">Derek&apos;s Word</p>
+            <h2 id="promise-heading" className="section-title mt-3">
+              Three Promises.
+              <br />
+              <span className="text-accent-hover">Every Job.</span>
+            </h2>
+            <p className="mt-5 text-lg text-muted">
+              Derek runs on referrals and repeat work. That only happens if
+              he delivers the same thing every time, to every customer.
+              These are the three things he doesn&apos;t break on.
+            </p>
+          </Reveal>
 
-        <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-3">
-          {testimonials.map(({ quote, name, detail }) => (
-            <StaggerItem key={name}>
-              <figure className="card-premium relative flex h-full flex-col p-8">
-              <Quote
-                className="absolute right-6 top-6 h-8 w-8 text-accent/20"
-                aria-hidden
-              />
-              <div
-                className="flex items-center gap-0.5 text-accent-hover"
-                aria-label="5 out of 5 stars"
-              >
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-current" aria-hidden />
-                ))}
-              </div>
-              <blockquote className="mt-4 flex-1 text-ink/85">
-                &ldquo;{quote}&rdquo;
-              </blockquote>
-              <figcaption className="mt-6 border-t border-border pt-4">
-                <p className="font-heading text-sm font-bold uppercase tracking-wider text-ink">
-                  {name}
-                </p>
-                <p className="text-sm text-muted">{detail}</p>
-              </figcaption>
-              </figure>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
+          <StaggerGroup className="space-y-5 lg:col-span-8">
+            {promises.map(({ icon: Icon, number, title, body }) => (
+              <StaggerItem key={number}>
+                <article className="card-premium group flex gap-6 p-7 sm:p-8">
+                  <div className="flex flex-col items-center">
+                    <span className="font-heading text-5xl font-bold leading-none text-accent/30 transition-colors group-hover:text-accent-hover/70">
+                      {number}
+                    </span>
+                    <span className="mt-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30">
+                      <Icon className="h-5 w-5 text-accent-hover" aria-hidden />
+                    </span>
+                  </div>
+                  <div className="flex-1 border-l border-border pl-6">
+                    <h3 className="font-heading text-xl font-bold uppercase text-ink sm:text-2xl">
+                      {title}
+                    </h3>
+                    <p className="mt-2 text-ink/80">{body}</p>
+                  </div>
+                </article>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </div>
       </div>
     </section>
   );

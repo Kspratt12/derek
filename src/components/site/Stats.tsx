@@ -1,66 +1,44 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
-import { Award, Clock, MapPin, Wrench } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { HomeIcon, MapPin, PhoneCall, Wrench } from "lucide-react";
 
-type Stat = {
+type Fact = {
   icon: typeof Wrench;
-  value: number;
-  suffix: string;
-  label: string;
+  headline: string;
+  detail: string;
 };
 
-const stats: Stat[] = [
-  { icon: Wrench, value: 500, suffix: "+", label: "Jobs Completed" },
-  { icon: Award, value: 5, suffix: ".0★", label: "Customer Rated" },
-  { icon: Clock, value: 24, suffix: "/7", label: "Availability" },
-  { icon: MapPin, value: 6, suffix: "", label: "Cities Served" },
+const facts: Fact[] = [
+  {
+    icon: HomeIcon,
+    headline: "Family Owned",
+    detail: "One mechanic. One standard. One name on every invoice.",
+  },
+  {
+    icon: Wrench,
+    headline: "Mobile Only",
+    detail: "No tow truck, no shop drop-off. Derek comes to your driveway.",
+  },
+  {
+    icon: PhoneCall,
+    headline: "Always Answering",
+    detail: "Breakdown calls get picked up. 24/7, year-round.",
+  },
+  {
+    icon: MapPin,
+    headline: "Wake & Johnston",
+    detail: "Raleigh, Clayton, Garner, Smithfield, Knightdale, Wendell.",
+  },
 ];
-
-function Counter({ to, suffix }: { to: number; suffix: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.6 });
-  const shouldReduce = useReducedMotion();
-  const [value, setValue] = useState(shouldReduce ? to : 0);
-
-  useEffect(() => {
-    if (!inView || shouldReduce) return;
-    const duration = 1400;
-    const start = performance.now();
-    let frame = 0;
-
-    const tick = (now: number) => {
-      const elapsed = now - start;
-      const t = Math.min(elapsed / duration, 1);
-      // Ease out cubic.
-      const eased = 1 - Math.pow(1 - t, 3);
-      const next = to < 10 ? +(to * eased).toFixed(1) : Math.round(to * eased);
-      setValue(next);
-      if (t < 1) frame = requestAnimationFrame(tick);
-    };
-
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [inView, to, shouldReduce]);
-
-  const display = to < 10 ? value.toFixed(1) : Math.round(value).toString();
-
-  return (
-    <span ref={ref}>
-      {display}
-      {suffix}
-    </span>
-  );
-}
 
 export function Stats() {
   const shouldReduce = useReducedMotion();
 
   return (
     <section
-      aria-label="Derek's Maintenance by the numbers"
-      className="relative border-b border-border bg-gradient-to-b from-bg via-surface/40 to-bg py-16"
+      aria-label="Real facts about Derek's Maintenance"
+      className="relative border-b border-border bg-gradient-to-b from-bg via-surface/40 to-bg py-16 sm:py-20"
     >
       <div className="absolute inset-0 grid-lines opacity-30" aria-hidden />
       <div className="container relative">
@@ -70,32 +48,34 @@ export function Stats() {
           viewport={{ once: true, amount: 0.3 }}
           variants={{
             hidden: {},
-            visible: { transition: { staggerChildren: 0.12 } },
+            visible: { transition: { staggerChildren: 0.1 } },
           }}
-          className="grid grid-cols-2 gap-6 md:grid-cols-4"
+          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
         >
-          {stats.map(({ icon: Icon, value, suffix, label }) => (
+          {facts.map(({ icon: Icon, headline, detail }) => (
             <motion.li
-              key={label}
+              key={headline}
               variants={{
-                hidden: { opacity: 0, y: 20 },
+                hidden: { opacity: 0, y: 16 },
                 visible: {
                   opacity: 1,
                   y: 0,
                   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
                 },
               }}
-              className="flex flex-col items-center text-center"
+              className="group flex items-start gap-4"
             >
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30">
-                <Icon className="h-6 w-6 text-accent-hover" aria-hidden />
+              <span className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30 transition-colors group-hover:bg-accent/25">
+                <Icon className="h-5 w-5 text-accent-hover" aria-hidden />
               </span>
-              <span className="mt-4 font-heading text-5xl font-bold text-ink sm:text-6xl">
-                <Counter to={value} suffix={suffix} />
-              </span>
-              <span className="mt-2 text-xs font-semibold uppercase tracking-[0.25em] text-muted">
-                {label}
-              </span>
+              <div>
+                <p className="font-heading text-lg font-bold uppercase tracking-wide text-ink">
+                  {headline}
+                </p>
+                <p className="mt-1 text-sm leading-relaxed text-muted">
+                  {detail}
+                </p>
+              </div>
             </motion.li>
           ))}
         </motion.ul>

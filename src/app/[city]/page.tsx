@@ -10,7 +10,6 @@ import { Header } from "@/components/site/Header";
 import { HowItWorks } from "@/components/site/HowItWorks";
 import { MobileCallBar } from "@/components/site/MobileCallBar";
 import { Testimonials } from "@/components/site/Testimonials";
-import { WhyDerek } from "@/components/site/WhyDerek";
 import { cities, getCityBySlug } from "@/lib/cities";
 import { services } from "@/lib/services";
 
@@ -219,7 +218,6 @@ export default function CityPage({ params }: { params: { city: string } }) {
 
         <HowItWorks />
         <Testimonials />
-        <WhyDerek />
         <FAQ />
 
         <section className="border-y border-border bg-surface/20 py-16">
