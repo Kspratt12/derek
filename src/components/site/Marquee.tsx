@@ -18,13 +18,13 @@ export function Marquee() {
   return (
     <div
       aria-hidden
-      className="group/mq relative overflow-hidden border-y border-border bg-accent/10 py-4"
+      className="relative overflow-hidden border-y border-border bg-accent/10 py-4"
     >
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-bg to-transparent sm:w-24" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-bg to-transparent sm:w-24" />
 
       <div
-        className="flex w-max animate-marquee whitespace-nowrap group-hover/mq:[animation-play-state:paused] motion-reduce:animate-none"
+        className="flex w-max animate-marquee whitespace-nowrap motion-reduce:animate-none"
         style={{ willChange: "transform" }}
       >
         {loop.map((text, i) => (
