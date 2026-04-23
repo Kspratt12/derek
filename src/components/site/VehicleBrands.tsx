@@ -52,22 +52,26 @@ export function VehicleBrands() {
           </p>
         </div>
 
-        <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-8 sm:gap-x-10 lg:gap-x-12">
+        <ul className="mx-auto mt-10 grid max-w-5xl grid-cols-3 items-start justify-items-center gap-x-2 gap-y-10 sm:grid-cols-4 sm:gap-x-6 md:grid-cols-6 lg:gap-x-8">
           {vehicleBrands.map(({ name, src }) => (
             <li
               key={name}
-              className="flex h-10 w-[90px] items-center justify-center sm:h-12 sm:w-[110px]"
-              aria-label={name}
+              className="group flex w-full max-w-[130px] flex-col items-center gap-3"
             >
-              <div className="relative h-full w-full opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0">
-                <Image
-                  src={src}
-                  alt={`${name} logo`}
-                  fill
-                  sizes="110px"
-                  className="object-contain"
-                />
+              <div className="relative flex h-14 w-full items-center justify-center">
+                <div className="relative h-full w-full opacity-70 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+                  <Image
+                    src={src}
+                    alt={`${name} logo`}
+                    fill
+                    sizes="130px"
+                    className="object-contain"
+                  />
+                </div>
               </div>
+              <span className="font-heading text-[10px] font-semibold uppercase tracking-[0.25em] text-muted transition-colors group-hover:text-ink">
+                {name}
+              </span>
             </li>
           ))}
         </ul>
