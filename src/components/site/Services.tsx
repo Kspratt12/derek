@@ -42,9 +42,9 @@ export function Services() {
         <Reveal className="max-w-3xl">
           <p className="eyebrow">What Derek Handles</p>
           <h2 id="services-heading" className="section-title mt-3">
-            From Driveway Oil Changes
+            From Oil Changes
             <br />
-            <span className="text-accent-hover">To Fleet-Down Mornings</span>
+            <span className="text-accent-hover">To Fleet Service.</span>
           </h2>
           <p className="mt-4 text-lg text-muted">
             Derek brings the shop to you. One mechanic, one truck, the tools
