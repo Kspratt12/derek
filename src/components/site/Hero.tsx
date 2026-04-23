@@ -102,20 +102,14 @@ export function Hero() {
         <div className="max-w-4xl">
           <motion.div
             {...fadeUp(0)}
-            className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-x-5"
+            className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2 sm:gap-x-7"
           >
             <span className="eyebrow flex items-center gap-2">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
               Raleigh, NC
             </span>
-            <span className="h-3 w-px bg-border/80" aria-hidden />
-            <span className="eyebrow flex items-center gap-2 text-ink/60">
-              Available 24/7
-            </span>
-            <span className="h-3 w-px bg-border/80" aria-hidden />
-            <span className="eyebrow flex items-center gap-2 text-ink/60">
-              Family Owned
-            </span>
+            <span className="eyebrow text-ink/60">Available 24/7</span>
+            <span className="eyebrow text-ink/60">Family Owned</span>
           </motion.div>
 
           <motion.h1
@@ -167,7 +161,7 @@ export function Hero() {
               className="hidden w-full sm:inline-flex sm:w-auto"
             >
               <a href="#contact" className="gap-2">
-                Request Service Online
+                Request Service
                 <ArrowRight className="h-5 w-5" />
               </a>
             </Button>
@@ -187,26 +181,6 @@ export function Hero() {
             </span>
           </motion.div>
 
-          {/* Slide indicators: dots at the bottom of the hero */}
-          <motion.div
-            {...fadeUp(0.7)}
-            className="mt-10 flex items-center gap-2"
-            aria-hidden
-          >
-            {slides.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setIndex(i)}
-                aria-label={`Show hero slide ${i + 1}`}
-                className={`h-1 rounded-full transition-all duration-500 ${
-                  index === i
-                    ? "w-10 bg-accent-hover"
-                    : "w-4 bg-ink/25 hover:bg-ink/50"
-                }`}
-              />
-            ))}
-          </motion.div>
         </div>
       </div>
 

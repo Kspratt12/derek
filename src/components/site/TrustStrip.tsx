@@ -58,7 +58,10 @@ export function TrustStrip() {
 
         <ul
           className="flex w-max animate-marquee-slow items-center motion-reduce:animate-none"
-          style={{ willChange: "transform" }}
+          style={{
+            willChange: "transform",
+            animationDirection: "reverse",
+          }}
         >
           {loop.map(({ name, src }, i) => (
             <li
