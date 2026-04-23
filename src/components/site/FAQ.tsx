@@ -58,8 +58,17 @@ export function FAQ() {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="relative border-t border-border bg-surface/20 py-20 sm:py-28"
+      className="relative isolate overflow-hidden border-t border-border bg-surface/20 py-16 sm:py-20"
     >
+      {/* Oversized faded question-mark watermark on the left column,
+          gives the header some visual anchor without adding motion. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-4 top-4 select-none font-heading font-bold leading-none text-accent/[0.06] sm:-left-2 sm:top-6 lg:left-0"
+        style={{ fontSize: "clamp(12rem, 20vw, 22rem)" }}
+      >
+        ?
+      </div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
