@@ -36,9 +36,28 @@ export function VehicleBrands() {
     >
       <div className="container">
         <div className="flex flex-col items-center gap-3 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5">
-            <Car className="h-4 w-4 text-accent-hover" aria-hidden />
-            <span className="font-heading text-[10px] font-semibold uppercase tracking-[0.3em] text-accent-hover">
+          <span
+            className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5"
+            style={{
+              background:
+                "linear-gradient(135deg, #F5DFA0 0%, #D4AF37 40%, #8B6A14 100%)",
+              borderColor: "#6F5210",
+              boxShadow:
+                "inset 0 1px 0 rgba(255,255,255,0.55), inset 0 -1px 0 rgba(0,0,0,0.25), 0 2px 6px -2px rgba(0,0,0,0.4)",
+            }}
+          >
+            <Car
+              className="h-4 w-4"
+              style={{ color: "#1A1A1A" }}
+              aria-hidden
+            />
+            <span
+              className="font-heading text-[10px] font-semibold uppercase tracking-[0.3em]"
+              style={{
+                color: "#1A1A1A",
+                textShadow: "0 1px 0 rgba(255,255,255,0.25)",
+              }}
+            >
               Every Make
             </span>
           </span>
