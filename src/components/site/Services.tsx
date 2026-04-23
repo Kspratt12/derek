@@ -1,4 +1,5 @@
 import { Check, Truck, Wrench } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 const mobileRepair = [
   "Brakes and rotors",
@@ -33,7 +34,7 @@ export function Services() {
   return (
     <section id="services" aria-labelledby="services-heading" className="relative py-20 sm:py-28">
       <div className="container">
-        <div className="max-w-3xl">
+        <Reveal className="max-w-3xl">
           <p className="eyebrow">What Derek Handles</p>
           <h2 id="services-heading" className="section-title mt-3">
             Services Built Around Your Schedule
@@ -42,10 +43,10 @@ export function Services() {
             From a quick oil change in your driveway to a fleet of trucks that
             can&apos;t afford downtime. Derek brings the shop to you.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-5">
-          <article className="lg:col-span-3 relative overflow-hidden rounded-xl border border-border bg-surface/60 p-8 sm:p-10">
+          <article className="card-premium lg:col-span-3 relative overflow-hidden p-8 sm:p-10">
             <div className="absolute left-0 top-0 h-full w-1 bg-accent" aria-hidden />
             <div className="flex items-center gap-3">
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30">
@@ -67,7 +68,7 @@ export function Services() {
             </ul>
           </article>
 
-          <article className="lg:col-span-2 relative overflow-hidden rounded-xl border border-border bg-surface/60 p-8 sm:p-10">
+          <article className="card-premium lg:col-span-2 relative overflow-hidden p-8 sm:p-10">
             <div className="absolute left-0 top-0 h-full w-1 bg-accent" aria-hidden />
             <div className="flex items-center gap-3">
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30">

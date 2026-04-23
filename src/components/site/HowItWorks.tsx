@@ -1,4 +1,5 @@
 import { PhoneCall, ClipboardCheck, Wrench, CreditCard } from "lucide-react";
+import { Reveal, StaggerGroup, StaggerItem } from "./Reveal";
 
 const steps = [
   {
@@ -31,7 +32,7 @@ export function HowItWorks() {
       className="relative border-t border-border bg-surface/20 py-20 sm:py-28"
     >
       <div className="container">
-        <div className="max-w-3xl">
+        <Reveal className="max-w-3xl">
           <p className="eyebrow">How It Works</p>
           <h2 id="process-heading" className="section-title mt-3">
             Four Steps. No Waiting Room.
@@ -40,29 +41,31 @@ export function HowItWorks() {
             The process is simple because it has to be. You have a vehicle
             that isn&apos;t working and you need it fixed.
           </p>
-        </div>
+        </Reveal>
 
-        <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerGroup
+          className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          stagger={0.1}
+        >
           {steps.map(({ icon: Icon, title, body }, i) => (
-            <li
-              key={title}
-              className="relative rounded-xl border border-border bg-bg/60 p-6"
-            >
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30">
-                  <Icon className="h-5 w-5 text-accent-hover" aria-hidden />
-                </span>
-                <span className="font-heading text-sm font-bold uppercase tracking-wider text-accent-hover">
-                  Step {String(i + 1).padStart(2, "0")}
-                </span>
+            <StaggerItem key={title}>
+              <div className="card-premium relative h-full p-6">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30">
+                    <Icon className="h-5 w-5 text-accent-hover" aria-hidden />
+                  </span>
+                  <span className="font-heading text-sm font-bold uppercase tracking-wider text-accent-hover">
+                    Step {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 className="mt-5 font-heading text-xl font-bold uppercase text-ink">
+                  {title}
+                </h3>
+                <p className="mt-2 text-ink/75">{body}</p>
               </div>
-              <h3 className="mt-5 font-heading text-xl font-bold uppercase text-ink">
-                {title}
-              </h3>
-              <p className="mt-2 text-ink/75">{body}</p>
-            </li>
+            </StaggerItem>
           ))}
-        </ol>
+        </StaggerGroup>
       </div>
     </section>
   );

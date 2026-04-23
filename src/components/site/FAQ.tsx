@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { Reveal } from "./Reveal";
 
 const faqs = [
   {
@@ -50,6 +52,7 @@ const faqSchema = {
 
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
+  const shouldReduce = useReducedMotion();
 
   return (
     <section
@@ -63,7 +66,7 @@ export function FAQ() {
       />
       <div className="container">
         <div className="grid gap-10 lg:grid-cols-5">
-          <div className="lg:col-span-2">
+          <Reveal className="lg:col-span-2">
             <p className="eyebrow">Questions</p>
             <h2 id="faq-heading" className="section-title mt-3">
               Before You Call
@@ -72,9 +75,9 @@ export function FAQ() {
               The questions people ask Derek most. If yours isn&apos;t here,
               just call — he&apos;ll shoot straight.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="lg:col-span-3">
+          <Reveal className="lg:col-span-3" delay={0.15}>
             <ul className="divide-y divide-border rounded-xl border border-border bg-bg/60">
               {faqs.map(({ q, a }, i) => {
                 const isOpen = open === i;
@@ -96,14 +99,28 @@ export function FAQ() {
                         aria-hidden
                       />
                     </button>
-                    {isOpen && (
-                      <div className="px-6 pb-5 text-ink/80">{a}</div>
-                    )}
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={
+                            shouldReduce ? false : { height: 0, opacity: 0 }
+                          }
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={
+                            shouldReduce ? undefined : { height: 0, opacity: 0 }
+                          }
+                          transition={{ duration: 0.28, ease: "easeOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 pb-5 text-ink/80">{a}</div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </li>
                 );
               })}
             </ul>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

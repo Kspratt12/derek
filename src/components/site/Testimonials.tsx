@@ -1,4 +1,5 @@
 import { Quote, Star } from "lucide-react";
+import { Reveal, StaggerGroup, StaggerItem } from "./Reveal";
 
 // Swap these three placeholders with real Google reviews or customer quotes from Derek.
 // Keep the structure: short attribution, vehicle + job, 1-2 sentence quote.
@@ -31,7 +32,7 @@ export function Testimonials() {
       className="relative py-20 sm:py-28"
     >
       <div className="container">
-        <div className="max-w-3xl">
+        <Reveal className="max-w-3xl">
           <p className="eyebrow">What Customers Say</p>
           <h2 id="reviews-heading" className="section-title mt-3">
             Real Jobs. Real Reviews.
@@ -40,14 +41,12 @@ export function Testimonials() {
             Derek&apos;s business runs on referrals and repeat work. Here&apos;s
             what people say after he shows up.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-3">
           {testimonials.map(({ quote, name, detail }) => (
-            <figure
-              key={name}
-              className="relative flex h-full flex-col rounded-xl border border-border bg-surface/60 p-8"
-            >
+            <StaggerItem key={name}>
+              <figure className="card-premium relative flex h-full flex-col p-8">
               <Quote
                 className="absolute right-6 top-6 h-8 w-8 text-accent/20"
                 aria-hidden
@@ -69,9 +68,10 @@ export function Testimonials() {
                 </p>
                 <p className="text-sm text-muted">{detail}</p>
               </figcaption>
-            </figure>
+              </figure>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );
