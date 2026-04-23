@@ -15,6 +15,7 @@ import { SignatureBand } from "@/components/site/SignatureBand";
 import { Stats } from "@/components/site/Stats";
 import { Testimonials } from "@/components/site/Testimonials";
 import { TrustStrip } from "@/components/site/TrustStrip";
+import { VehicleBrands } from "@/components/site/VehicleBrands";
 
 export default function HomePage() {
   return (
@@ -26,6 +27,7 @@ export default function HomePage() {
         <Stats />
         <MeetDerek />
         <Services />
+        <VehicleBrands />
         <TrustStrip />
         <SignatureBand />
         <HowItWorks />
