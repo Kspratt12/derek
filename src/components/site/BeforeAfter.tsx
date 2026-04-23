@@ -157,11 +157,11 @@ export function BeforeAfter() {
         <div className="max-w-3xl">
           <p className="eyebrow">Before / After</p>
           <h2 id="before-after-heading" className="section-title mt-3">
-            See The Work, Drag The Slider
+            Drag To Compare.
           </h2>
           <p className="mt-4 text-lg text-muted">
-            Drag each image to compare what Derek showed up to versus what he
-            left behind. Real jobs, no filters.
+            Same vehicle, before and after. Drag the handle to see what
+            Derek pulled up to versus what he left behind.
           </p>
         </div>
 

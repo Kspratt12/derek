@@ -114,12 +114,12 @@ export function Gallery() {
           <div className="max-w-2xl">
             <p className="eyebrow">Recent Jobs</p>
             <h2 id="gallery-heading" className="section-title mt-3">
-              Real Work, Real Vehicles
+              Work From My Truck.
             </h2>
           </div>
           <p className="max-w-md text-muted sm:text-right">
-            A sample of jobs completed on driveways, at fleet yards, and in
-            the shop. No stock photos. Click any photo to zoom.
+            Jobs from driveways, fleet yards, and a few days in the shop.
+            Every photo here is mine. Click any one to zoom.
           </p>
         </div>
 
