@@ -70,10 +70,7 @@ export function Hero() {
             {...fadeUp(0.1)}
             id="hero-heading"
             className="font-heading text-5xl font-bold uppercase leading-[0.95] tracking-tight text-ink sm:text-6xl md:text-7xl lg:text-[84px]"
-            style={{
-              textShadow:
-                "0 2px 8px rgba(0,0,0,0.6), 0 0 30px rgba(0,0,0,0.4)",
-            }}
+            style={{ textShadow: "0 1px 3px rgba(0,0,0,0.4)" }}
           >
             Raleigh&apos;s
             <br />
@@ -85,7 +82,7 @@ export function Hero() {
           <motion.p
             {...fadeUp(0.25)}
             className="mt-6 max-w-2xl text-lg text-ink/90 sm:text-xl"
-            style={{ textShadow: "0 1px 6px rgba(0,0,0,0.75)" }}
+            style={{ textShadow: "0 1px 2px rgba(0,0,0,0.35)" }}
           >
             On-site auto repair and fleet maintenance in Raleigh, Clayton,
             Garner, Smithfield, Knightdale, and Wendell. No tow truck. No
@@ -118,7 +115,7 @@ export function Hero() {
           <motion.div
             {...fadeUp(0.55)}
             className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink/85"
-            style={{ textShadow: "0 1px 4px rgba(0,0,0,0.75)" }}
+            style={{ textShadow: "0 1px 2px rgba(0,0,0,0.3)" }}
           >
             <span className="inline-flex items-center gap-2">
               <Clock className="h-4 w-4 text-accent-hover" aria-hidden />
