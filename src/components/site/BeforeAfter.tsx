@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { MoveHorizontal } from "lucide-react";
 
 type Pair = {
@@ -40,8 +40,8 @@ const pairs: Pair[] = [
 
 function Slider({ pair }: { pair: Pair }) {
   const [position, setPosition] = useState(50);
+  const [dragging, setDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const draggingRef = useRef(false);
 
   const setFromClientX = useCallback((clientX: number) => {
     const el = containerRef.current;
@@ -51,61 +51,70 @@ function Slider({ pair }: { pair: Pair }) {
     setPosition(Math.max(0, Math.min(100, next)));
   }, []);
 
-  useEffect(() => {
-    const handleMove = (e: PointerEvent) => {
-      if (!draggingRef.current) return;
-      setFromClientX(e.clientX);
-    };
-    const handleUp = () => {
-      draggingRef.current = false;
-    };
-    window.addEventListener("pointermove", handleMove);
-    window.addEventListener("pointerup", handleUp);
-    window.addEventListener("pointercancel", handleUp);
-    return () => {
-      window.removeEventListener("pointermove", handleMove);
-      window.removeEventListener("pointerup", handleUp);
-      window.removeEventListener("pointercancel", handleUp);
-    };
-  }, [setFromClientX]);
-
   return (
     <figure className="card-premium overflow-hidden p-0">
       <div
         ref={containerRef}
         className="relative aspect-[4/3] w-full touch-none select-none overflow-hidden"
-        onPointerDown={(e) => {
-          draggingRef.current = true;
-          setFromClientX(e.clientX);
-        }}
-        onKeyDown={(e) => {
-          if (e.key === "ArrowLeft") setPosition((p) => Math.max(0, p - 4));
-          if (e.key === "ArrowRight") setPosition((p) => Math.min(100, p + 4));
-        }}
+        style={{ cursor: dragging ? "grabbing" : "grab" }}
         role="slider"
         aria-label={`Before and after slider: ${pair.title}`}
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuenow={Math.round(position)}
         tabIndex={0}
+        onPointerDown={(e) => {
+          e.preventDefault();
+          const el = e.currentTarget;
+          el.setPointerCapture(e.pointerId);
+          setDragging(true);
+          setFromClientX(e.clientX);
+        }}
+        onPointerMove={(e) => {
+          if (!dragging) return;
+          setFromClientX(e.clientX);
+        }}
+        onPointerUp={(e) => {
+          const el = e.currentTarget;
+          if (el.hasPointerCapture(e.pointerId)) {
+            el.releasePointerCapture(e.pointerId);
+          }
+          setDragging(false);
+        }}
+        onPointerCancel={() => setDragging(false)}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            setPosition((p) => Math.max(0, p - 4));
+          }
+          if (e.key === "ArrowRight") {
+            e.preventDefault();
+            setPosition((p) => Math.min(100, p + 4));
+          }
+        }}
       >
+        {/* After image fills the whole frame. */}
         <Image
           src={pair.after.src}
           alt={pair.after.alt}
           fill
           sizes="(max-width: 1024px) 100vw, 50vw"
-          className="object-cover"
+          className="pointer-events-none object-cover"
+          draggable={false}
         />
 
+        {/* Before image layered on top, clipped from the right via clipPath. */}
         <Image
           src={pair.before.src}
           alt={pair.before.alt}
           fill
           sizes="(max-width: 1024px) 100vw, 50vw"
-          className="object-cover"
+          className="pointer-events-none object-cover"
           style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+          draggable={false}
         />
 
+        {/* Corner labels */}
         <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-black/70 px-3 py-1 font-heading text-[10px] uppercase tracking-[0.2em] text-ink">
           Before
         </span>
@@ -113,11 +122,12 @@ function Slider({ pair }: { pair: Pair }) {
           After
         </span>
 
+        {/* Divider + handle */}
         <div
           className="pointer-events-none absolute inset-y-0 z-10 w-0.5 bg-accent-hover shadow-[0_0_20px_rgba(100,170,60,0.6)]"
           style={{ left: `calc(${position}% - 1px)` }}
         >
-          <div className="absolute top-1/2 left-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-accent-hover bg-bg shadow-[0_0_20px_rgba(100,170,60,0.5)]">
+          <div className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-accent-hover bg-bg shadow-[0_0_20px_rgba(100,170,60,0.5)]">
             <MoveHorizontal
               className="h-5 w-5 text-accent-hover"
               aria-hidden
@@ -125,6 +135,7 @@ function Slider({ pair }: { pair: Pair }) {
           </div>
         </div>
       </div>
+
       <figcaption className="p-5">
         <div className="font-heading text-lg font-bold uppercase text-ink">
           {pair.title}

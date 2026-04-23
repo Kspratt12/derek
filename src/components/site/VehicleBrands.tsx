@@ -25,9 +25,7 @@ const vehicleBrands: VehicleBrand[] = [
   { name: "Porsche", src: "/images/vehicles/porsche.png" },
 ];
 
-// Flip to true once logos are dropped in /public/images/vehicles/.
-// Keeping this gated so broken images don't render on the live site.
-const ENABLED = false;
+const ENABLED = true;
 
 export function VehicleBrands() {
   if (!ENABLED) return null;
