@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    background-image:
+      radial-gradient(circle at 0% 0%, rgba(45, 80, 22, 0.08), transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(45, 80, 22, 0.05), transparent 40%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background-color: #2d5016;
+    color: #f5f1e8;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, rgba(245, 241, 232, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(245, 241, 232, 0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .section-title {
+    @apply font-heading text-4xl sm:text-5xl md:text-6xl uppercase font-bold tracking-tight text-ink;
+  }
+
+  .eyebrow {
+    @apply font-heading text-xs sm:text-sm uppercase tracking-[0.25em] text-accent-hover font-semibold;
+  }
+}
