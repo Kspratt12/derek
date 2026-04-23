@@ -28,11 +28,11 @@ export default function HomePage() {
         <MeetDerek />
         <Services />
         <VehicleBrands />
-        <TrustStrip />
         <SignatureBand />
         <HowItWorks />
         <Gallery />
         <BeforeAfter />
+        <TrustStrip />
         <Testimonials />
         <FirstReview />
         <FAQ />
