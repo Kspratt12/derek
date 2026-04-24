@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { ShieldCheck } from "lucide-react";
+import { MarqueeLogo } from "./MarqueeLogo";
 
 type Brand = {
   name: string;
@@ -75,15 +75,7 @@ export function TrustStrip() {
               className="mr-14 flex h-12 w-[120px] flex-none items-center justify-center sm:mr-20 sm:h-14 sm:w-[140px]"
               aria-label={name}
             >
-              <div className="relative h-full w-full opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0">
-                <Image
-                  src={src}
-                  alt={`${name} logo`}
-                  fill
-                  sizes="140px"
-                  className="object-contain"
-                />
-              </div>
+              <MarqueeLogo src={src} name={name} />
             </li>
           ))}
         </ul>
