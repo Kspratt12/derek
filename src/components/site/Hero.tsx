@@ -104,7 +104,7 @@ export function Hero() {
             {...fadeUp(0)}
             className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2 sm:gap-x-7"
           >
-            <span className="eyebrow flex items-center gap-2">
+            <span className="eyebrow eyebrow-plain flex items-center gap-2">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
               Raleigh, NC
             </span>

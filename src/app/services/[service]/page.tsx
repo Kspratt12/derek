@@ -137,7 +137,7 @@ export default function ServicePage({
             </nav>
 
             <div className="max-w-4xl">
-              <span className="eyebrow flex items-center gap-2">
+              <span className="eyebrow eyebrow-plain flex items-center gap-2">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
                 Mobile Service
               </span>
@@ -220,7 +220,7 @@ export default function ServicePage({
 
               <aside>
                 <div className="rounded-xl border border-border bg-surface/60 p-8">
-                  <p className="eyebrow flex items-center gap-2">
+                  <p className="eyebrow eyebrow-plain flex items-center gap-2">
                     <AlertTriangle
                       className="h-4 w-4 text-accent-hover"
                       aria-hidden

@@ -142,7 +142,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
             </nav>
 
             <div className="max-w-4xl">
-              <span className="eyebrow flex items-center gap-2">
+              <span className="eyebrow eyebrow-plain flex items-center gap-2">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
                 {city.county}
               </span>

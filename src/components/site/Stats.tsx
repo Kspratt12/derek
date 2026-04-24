@@ -152,6 +152,14 @@ export function Stats() {
       className="relative border-b border-border bg-gradient-to-b from-bg via-surface/40 to-bg py-16 sm:py-20"
     >
       <div className="absolute inset-0 grid-lines opacity-30" aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-0 hidden items-center justify-center overflow-hidden sm:flex"
+        aria-hidden
+      >
+        <span className="select-none font-heading text-[18rem] font-bold leading-none tracking-tighter text-ink/[0.035] lg:text-[24rem]">
+          24/7
+        </span>
+      </div>
       <div className="container relative">
         <motion.ul
           initial={shouldReduce ? false : "hidden"}
@@ -176,7 +184,7 @@ export function Stats() {
               }}
               className="group flex cursor-default items-start gap-5 sm:gap-4 transition-transform duration-300 hover:-translate-y-0.5"
             >
-              <span className="inline-flex h-16 w-16 sm:h-11 sm:w-11 flex-none items-center justify-center rounded-xl sm:rounded-lg bg-accent/15 ring-1 ring-accent/30 transition-all duration-300 group-hover:scale-110 group-hover:bg-accent/30 group-hover:ring-accent/60">
+              <span className="inline-flex h-16 w-16 sm:h-11 sm:w-11 flex-none items-center justify-center rounded-sm bg-accent/15 ring-1 ring-accent/30 transition-all duration-300 group-hover:scale-110 group-hover:bg-accent/30 group-hover:ring-accent/60">
                 <Icon className="h-8 w-8 sm:h-5 sm:w-5 text-accent-hover" />
               </span>
               <div>

@@ -75,6 +75,20 @@
 
   .eyebrow {
     @apply font-heading text-xs sm:text-sm uppercase tracking-[0.25em] text-accent-hover font-semibold;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+  .eyebrow::before {
+    content: "";
+    display: block;
+    width: 2px;
+    height: 0.95em;
+    background-color: currentColor;
+    flex-shrink: 0;
+  }
+  .eyebrow-plain::before {
+    display: none;
   }
 
   /* Premium card with accent glow on hover. */
