@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Job = {
   src: string;
@@ -71,8 +71,6 @@ const jobs: Job[] = [
 
 export function Gallery() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const shouldReduce = useReducedMotion();
-
   const close = useCallback(() => setOpenIndex(null), []);
   const next = useCallback(
     () => setOpenIndex((i) => (i === null ? null : (i + 1) % jobs.length)),
@@ -123,29 +121,13 @@ export function Gallery() {
           </p>
         </div>
 
-        <motion.div
-          initial={shouldReduce ? false : "hidden"}
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.07 } },
-          }}
-          className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-        >
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {jobs.map((job, i) => (
-            <motion.button
+            <button
               key={job.src}
               type="button"
               onClick={() => setOpenIndex(i)}
               aria-label={`View ${job.title} full size`}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: { duration: 0.5, ease: "easeOut" },
-                },
-              }}
               className="group relative overflow-hidden rounded-xl border border-border bg-surface/60 p-0 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/50 hover:shadow-[0_10px_40px_-10px_rgba(45,80,22,0.35)]"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden">
@@ -172,9 +154,9 @@ export function Gallery() {
                 </div>
                 <div className="mt-1 text-sm text-muted">{job.subtitle}</div>
               </div>
-            </motion.button>
+            </button>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       <AnimatePresence>
