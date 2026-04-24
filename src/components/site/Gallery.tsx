@@ -146,16 +146,16 @@ export function Gallery() {
                   transition: { duration: 0.5, ease: "easeOut" },
                 },
               }}
-              className="card-premium group overflow-hidden p-0 text-left"
+              className="group relative overflow-hidden rounded-xl border border-border bg-surface/60 p-0 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/50 hover:shadow-[0_10px_40px_-10px_rgba(45,80,22,0.35)]"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <Image
                   src={job.src}
                   alt={job.alt}
                   fill
-                  loading={i < 3 ? "eager" : "lazy"}
+                  loading="eager"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  quality={90}
+                  quality={85}
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />

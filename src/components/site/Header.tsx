@@ -55,10 +55,15 @@ export function Header() {
           <Link
             href="/"
             aria-label="Derek's Maintenance home"
-            className="group flex items-center gap-3"
+            className="group flex items-center gap-2.5 sm:gap-3"
           >
             <div className="relative">
-              <div className="relative h-10 w-10 overflow-hidden rounded-full ring-1 ring-accent/40 transition-all duration-300 group-hover:ring-accent sm:h-12 sm:w-12">
+              {/* Subtle accent glow behind the logo for depth. */}
+              <div
+                aria-hidden
+                className="absolute inset-0 -z-10 rounded-full bg-accent/40 blur-md opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              />
+              <div className="relative h-10 w-10 overflow-hidden rounded-full ring-1 ring-accent/50 shadow-[0_4px_14px_-4px_rgba(0,0,0,0.6)] transition-all duration-300 group-hover:ring-accent group-hover:ring-2 sm:h-12 sm:w-12">
                 <Image
                   src="/images/logo.jpg"
                   alt="Derek's Maintenance LLC logo"
@@ -70,11 +75,11 @@ export function Header() {
               </div>
               <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-bg bg-accent-hover" />
             </div>
-            <div className="hidden sm:block">
-              <div className="font-heading text-base font-bold uppercase tracking-wide text-ink leading-none">
+            <div>
+              <div className="font-heading text-sm font-bold uppercase tracking-wide text-ink leading-none sm:text-base">
                 Derek&apos;s Maintenance
               </div>
-              <div className="mt-1 text-[10px] uppercase tracking-[0.25em] text-muted">
+              <div className="mt-1 text-[9px] uppercase tracking-[0.22em] text-muted sm:text-[10px] sm:tracking-[0.25em]">
                 Mobile Mechanic · Raleigh NC
               </div>
             </div>
