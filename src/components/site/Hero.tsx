@@ -98,7 +98,7 @@ export function Hero() {
         <div className="absolute inset-0 grid-lines opacity-20" />
       </div>
 
-      <div className="container relative flex min-h-[90vh] flex-col justify-center py-20 sm:min-h-[88vh] sm:py-24 lg:py-28">
+      <div className="container relative flex min-h-[78vh] flex-col justify-center py-16 sm:min-h-[88vh] sm:py-24 lg:py-28">
         <div className="max-w-4xl">
           <motion.div
             {...fadeUp(0)}

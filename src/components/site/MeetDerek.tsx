@@ -37,11 +37,17 @@ export function MeetDerek() {
                   className="object-cover"
                   quality={95}
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bg via-bg/60 to-transparent p-6 pt-16">
-                  <p className="font-heading text-xs uppercase tracking-[0.3em] text-accent-hover">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bg via-bg/90 to-bg/10 p-5 pt-20 sm:p-6 sm:pt-20">
+                  <p
+                    className="font-heading text-xs uppercase tracking-[0.3em] text-accent-hover"
+                    style={{ textShadow: "0 1px 2px rgba(0,0,0,0.7)" }}
+                  >
                     Every Customer
                   </p>
-                  <p className="mt-2 font-heading text-lg font-bold uppercase text-ink">
+                  <p
+                    className="mt-1.5 font-heading text-lg font-bold uppercase text-ink sm:text-xl"
+                    style={{ textShadow: "0 1px 2px rgba(0,0,0,0.7)" }}
+                  >
                     Gets The Same Derek
                   </p>
                 </div>
