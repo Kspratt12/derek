@@ -174,16 +174,16 @@ export function Stats() {
                   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
                 },
               }}
-              className="group flex cursor-default items-start gap-4 transition-transform duration-300 hover:-translate-y-0.5"
+              className="group flex cursor-default items-start gap-5 sm:gap-4 transition-transform duration-300 hover:-translate-y-0.5"
             >
-              <span className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30 transition-all duration-300 group-hover:scale-110 group-hover:bg-accent/30 group-hover:ring-accent/60">
-                <Icon className="h-5 w-5 text-accent-hover" />
+              <span className="inline-flex h-16 w-16 sm:h-11 sm:w-11 flex-none items-center justify-center rounded-xl sm:rounded-lg bg-accent/15 ring-1 ring-accent/30 transition-all duration-300 group-hover:scale-110 group-hover:bg-accent/30 group-hover:ring-accent/60">
+                <Icon className="h-8 w-8 sm:h-5 sm:w-5 text-accent-hover" />
               </span>
               <div>
-                <p className="font-heading text-lg font-bold uppercase tracking-wide text-ink">
+                <p className="font-heading text-2xl sm:text-lg font-bold uppercase tracking-wide text-ink">
                   {headline}
                 </p>
-                <p className="mt-1 text-sm leading-relaxed text-muted">
+                <p className="mt-1.5 sm:mt-1 text-base sm:text-sm leading-relaxed text-muted">
                   {detail}
                 </p>
               </div>

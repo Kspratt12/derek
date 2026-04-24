@@ -56,7 +56,7 @@ export function Services() {
         <div className="mt-16 grid items-stretch gap-8 lg:grid-cols-12 lg:gap-10">
           <Reveal direction="left" className="relative lg:col-span-6">
             <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-accent/30 to-transparent blur-xl" />
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-accent/20 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]">
+            <div className="relative aspect-[16/9] lg:aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-accent/20 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]">
               <Image
                 src="/images/parts.jpg"
                 alt="Two suspension components side by side showing the worn original and the fresh replacement"
@@ -130,7 +130,7 @@ export function Services() {
             className="relative order-1 lg:order-2 lg:col-span-6"
           >
             <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-bl from-accent/30 to-transparent blur-xl" />
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-accent/20 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]">
+            <div className="relative aspect-[16/9] lg:aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-accent/20 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]">
               <Image
                 src="/images/pics-2.jpg"
                 alt="Heavy-duty clutch components in their shipping boxes ready for installation"
