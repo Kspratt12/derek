@@ -42,6 +42,14 @@ function Slider({ pair }: { pair: Pair }) {
   const [position, setPosition] = useState(50);
   const [dragging, setDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  // Track first-touch origin so we can decide if the user wants to
+  // scroll the page (vertical) or drag the slider (horizontal).
+  const intentRef = useRef<{
+    pointerId: number;
+    x: number;
+    y: number;
+    decided: boolean;
+  } | null>(null);
 
   const setFromClientX = useCallback((clientX: number) => {
     const el = containerRef.current;
@@ -55,8 +63,11 @@ function Slider({ pair }: { pair: Pair }) {
     <figure className="card-premium overflow-hidden p-0">
       <div
         ref={containerRef}
-        className="relative aspect-[4/3] w-full touch-none select-none overflow-hidden"
-        style={{ cursor: dragging ? "grabbing" : "grab" }}
+        className="relative aspect-[4/3] w-full select-none overflow-hidden"
+        style={{
+          cursor: dragging ? "grabbing" : "grab",
+          touchAction: "pan-y",
+        }}
         role="slider"
         aria-label={`Before and after slider: ${pair.title}`}
         aria-valuemin={0}
@@ -64,24 +75,60 @@ function Slider({ pair }: { pair: Pair }) {
         aria-valuenow={Math.round(position)}
         tabIndex={0}
         onPointerDown={(e) => {
-          e.preventDefault();
-          const el = e.currentTarget;
-          el.setPointerCapture(e.pointerId);
-          setDragging(true);
-          setFromClientX(e.clientX);
+          // Mouse / pen: commit to dragging immediately.
+          if (e.pointerType !== "touch") {
+            const el = e.currentTarget;
+            el.setPointerCapture(e.pointerId);
+            setDragging(true);
+            setFromClientX(e.clientX);
+            return;
+          }
+          // Touch: wait to see direction before committing.
+          intentRef.current = {
+            pointerId: e.pointerId,
+            x: e.clientX,
+            y: e.clientY,
+            decided: false,
+          };
         }}
         onPointerMove={(e) => {
-          if (!dragging) return;
-          setFromClientX(e.clientX);
+          // If we've already committed to dragging, update position.
+          if (dragging) {
+            setFromClientX(e.clientX);
+            return;
+          }
+          // Touch intent phase: decide horizontal drag vs vertical scroll.
+          const intent = intentRef.current;
+          if (!intent || intent.decided || intent.pointerId !== e.pointerId) {
+            return;
+          }
+          const dx = Math.abs(e.clientX - intent.x);
+          const dy = Math.abs(e.clientY - intent.y);
+          // Wait until the user has moved at least ~10px in some direction.
+          if (dx < 10 && dy < 10) return;
+          intent.decided = true;
+          if (dx > dy) {
+            // Horizontal intent: take over the touch as a drag.
+            const el = e.currentTarget;
+            el.setPointerCapture(e.pointerId);
+            setDragging(true);
+            setFromClientX(e.clientX);
+          }
+          // Vertical intent: do nothing so the browser can scroll
+          // the page naturally (touch-action: pan-y allows this).
         }}
         onPointerUp={(e) => {
+          intentRef.current = null;
           const el = e.currentTarget;
           if (el.hasPointerCapture(e.pointerId)) {
             el.releasePointerCapture(e.pointerId);
           }
           setDragging(false);
         }}
-        onPointerCancel={() => setDragging(false)}
+        onPointerCancel={() => {
+          intentRef.current = null;
+          setDragging(false);
+        }}
         onKeyDown={(e) => {
           if (e.key === "ArrowLeft") {
             e.preventDefault();
