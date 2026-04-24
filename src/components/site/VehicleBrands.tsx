@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Car } from "lucide-react";
+import { DraggableMarquee } from "./DraggableMarquee";
 
 type VehicleBrand = {
   name: string;
@@ -56,17 +57,13 @@ export function VehicleBrands() {
       </div>
 
       {/* Marquee band: full-bleed, pauses on hover */}
-      <div aria-hidden className="relative mt-7 overflow-hidden">
-        {/* Edge fades so logos feather in and out of view */}
+      <div className="relative mt-7 overflow-hidden">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-bg to-transparent sm:w-32" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-bg to-transparent sm:w-32" />
 
-        <ul
-          className="flex w-max animate-marquee-slow items-center motion-reduce:animate-none"
-          style={{ willChange: "transform" }}
-        >
+        <DraggableMarquee speed={50} direction="left">
           {loop.map(({ name, src, scale = 1 }, i) => (
-            <li
+            <div
               key={`${name}-${i}`}
               className="mr-14 flex h-12 w-[120px] flex-none items-center justify-center sm:mr-20 sm:h-14 sm:w-[140px]"
               aria-label={name}
@@ -81,11 +78,12 @@ export function VehicleBrands() {
                   fill
                   sizes="140px"
                   className="object-contain"
+                  draggable={false}
                 />
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
+        </DraggableMarquee>
       </div>
 
       {/* Screen-reader-accessible list (marquee itself is aria-hidden for AT users) */}

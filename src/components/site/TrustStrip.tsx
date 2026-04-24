@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ShieldCheck } from "lucide-react";
+import { DraggableMarquee } from "./DraggableMarquee";
 
 type Brand = {
   name: string;
@@ -58,19 +59,13 @@ export function TrustStrip() {
 
       {/* Scrolling marquee, matching the vehicle-brands treatment.
           Paused on hover so users can inspect any single logo. */}
-      <div aria-hidden className="relative mt-7 overflow-hidden">
+      <div className="relative mt-7 overflow-hidden">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-bg to-transparent sm:w-32" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-bg to-transparent sm:w-32" />
 
-        <ul
-          className="flex w-max animate-marquee-slow items-center motion-reduce:animate-none"
-          style={{
-            willChange: "transform",
-            animationDirection: "reverse",
-          }}
-        >
+        <DraggableMarquee speed={50} direction="right">
           {loop.map(({ name, src }, i) => (
-            <li
+            <div
               key={`${name}-${i}`}
               className="mr-14 flex h-12 w-[120px] flex-none items-center justify-center sm:mr-20 sm:h-14 sm:w-[140px]"
               aria-label={name}
@@ -82,11 +77,12 @@ export function TrustStrip() {
                   fill
                   sizes="140px"
                   className="object-contain"
+                  draggable={false}
                 />
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
+        </DraggableMarquee>
       </div>
 
       <ul className="sr-only">
