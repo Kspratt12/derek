@@ -168,6 +168,15 @@
       transform: translateX(-50%);
     }
   }
+  .animate-marquee,
+  .animate-marquee-slow {
+    /* Force GPU compositing so iOS renders the continuous marquee
+       smoothly without sub-pixel jitter or repaint artifacts. */
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
   .animate-marquee {
     animation: marquee-scroll 40s linear infinite;
   }

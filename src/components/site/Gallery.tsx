@@ -140,12 +140,10 @@ export function Gallery() {
               onClick={() => setOpenIndex(i)}
               aria-label={`View ${job.title} full size`}
               variants={{
-                hidden: { opacity: 0, y: 20, scale: 0.97 },
+                hidden: { opacity: 0 },
                 visible: {
                   opacity: 1,
-                  y: 0,
-                  scale: 1,
-                  transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+                  transition: { duration: 0.5, ease: "easeOut" },
                 },
               }}
               className="card-premium group overflow-hidden p-0 text-left"
