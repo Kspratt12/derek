@@ -1,5 +1,5 @@
+import Image from "next/image";
 import { Car } from "lucide-react";
-import { MarqueeLogo } from "./MarqueeLogo";
 
 type VehicleBrand = {
   name: string;
@@ -71,7 +71,18 @@ export function VehicleBrands() {
               className="mr-14 flex h-12 w-[120px] flex-none items-center justify-center sm:mr-20 sm:h-14 sm:w-[140px]"
               aria-label={name}
             >
-              <MarqueeLogo src={src} name={name} scale={scale} />
+              <div
+                className="relative h-full w-full"
+                style={{ transform: `scale(${scale})` }}
+              >
+                <Image
+                  src={src}
+                  alt={`${name} logo`}
+                  fill
+                  sizes="140px"
+                  className="object-contain"
+                />
+              </div>
             </li>
           ))}
         </ul>
