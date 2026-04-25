@@ -1,11 +1,14 @@
 "use client";
 
+import Image from "next/image";
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Phone, ArrowRight, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
   const shouldReduce = useReducedMotion();
+  const [videoReady, setVideoReady] = useState(false);
 
   const fadeUp = (delay: number) => ({
     initial: shouldReduce ? false : { opacity: 0, y: 24 },
@@ -20,16 +23,34 @@ export function Hero() {
       className="relative isolate overflow-hidden"
     >
       <div className="absolute inset-0 -z-10">
+        {/* Poster image as the always-on fallback layer. Shows instantly so
+            users never see a black flash, then the video crossfades over it
+            once it can play. Stays visible if video is blocked (iOS Low
+            Power Mode, slow networks, reduced-motion preference). */}
+        <Image
+          src="/images/main-hero.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-[0.85]"
+          style={{ objectPosition: "center 40%" }}
+        />
+
         {/* Full-bleed background video. Native quality, no transcoding. */}
         <video
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.85]"
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+            videoReady ? "opacity-[0.85]" : "opacity-0"
+          }`}
           src="/videos/Hero.mp4"
           poster="/images/main-hero.png"
-          autoPlay={!shouldReduce}
+          autoPlay
           muted
           loop
           playsInline
           preload="auto"
+          onCanPlay={() => setVideoReady(true)}
+          style={{ objectPosition: "center 40%" }}
           aria-hidden
         />
 
