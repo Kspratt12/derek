@@ -1,52 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import {
-  AnimatePresence,
-  motion,
-  useReducedMotion,
-} from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Phone, ArrowRight, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-type HeroSlide = {
-  src: string;
-  alt: string;
-  objectPosition: string;
-};
-
-const slides: HeroSlide[] = [
-  {
-    src: "/images/main-hero.png",
-    alt: "",
-    objectPosition: "center 40%",
-  },
-  {
-    src: "/images/hero-2.png",
-    alt: "",
-    objectPosition: "center 35%",
-  },
-  {
-    src: "/images/hero-1.png",
-    alt: "",
-    objectPosition: "center 35%",
-  },
-];
-
-const SLIDE_DURATION_MS = 7000;
-
 export function Hero() {
   const shouldReduce = useReducedMotion();
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    if (shouldReduce) return;
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-    }, SLIDE_DURATION_MS);
-    return () => clearInterval(timer);
-  }, [shouldReduce]);
 
   const fadeUp = (delay: number) => ({
     initial: shouldReduce ? false : { opacity: 0, y: 24 },
@@ -61,35 +20,20 @@ export function Hero() {
       className="relative isolate overflow-hidden"
     >
       <div className="absolute inset-0 -z-10">
-        {/* Cinematic crossfade slideshow with slow Ken Burns zoom. */}
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={slides[index].src}
-            className="absolute inset-0"
-            initial={{ opacity: 0, scale: 1.08 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{
-              opacity: { duration: 1.6, ease: "easeInOut" },
-              scale: {
-                duration: SLIDE_DURATION_MS / 1000 + 2,
-                ease: "linear",
-              },
-            }}
-          >
-            <Image
-              src={slides[index].src}
-              alt={slides[index].alt}
-              fill
-              priority={index === 0}
-              sizes="100vw"
-              className="object-cover opacity-[0.85]"
-              style={{ objectPosition: slides[index].objectPosition }}
-            />
-          </motion.div>
-        </AnimatePresence>
+        {/* Full-bleed background video. Native quality, no transcoding. */}
+        <video
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.85]"
+          src="/videos/Hero.mp4"
+          poster="/images/main-hero.png"
+          autoPlay={!shouldReduce}
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden
+        />
 
-        {/* Left-column darken for text readability; right side shows photo. */}
+        {/* Left-column darken for text readability; right side shows video. */}
         <div className="absolute inset-0 bg-gradient-to-r from-bg/90 via-bg/50 to-transparent" />
         {/* Bottom fade into the next section. */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg/70" />
