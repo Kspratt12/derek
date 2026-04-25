@@ -153,10 +153,10 @@ export function Stats() {
     >
       <div className="absolute inset-0 grid-lines opacity-30" aria-hidden />
       <div
-        className="pointer-events-none absolute inset-0 hidden items-center justify-center overflow-hidden sm:flex"
+        className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
         aria-hidden
       >
-        <span className="select-none font-heading text-[18rem] font-bold leading-none tracking-tighter text-ink/[0.035] lg:text-[24rem]">
+        <span className="select-none font-heading text-[14rem] font-bold leading-none tracking-tighter text-ink/[0.035] sm:text-[18rem] lg:text-[24rem]">
           24/7
         </span>
       </div>
